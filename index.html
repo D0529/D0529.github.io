@@ -791,51 +791,83 @@
   .stay-actions .btn { padding: 0.5rem 0.95rem; font-size: 0.65rem; }
 
   /* ── RSVP ── */
-  .rsvp-frame {
+  .rsvp-cta {
     background: var(--white);
     border: 1px solid var(--gold-pale);
     border-radius: 2px;
-    padding: 0.5rem;
-    position: relative;
-    box-shadow: 0 4px 18px rgba(42,34,24,0.05);
-  }
-  .rsvp-frame iframe {
-    width: 100%;
-    min-height: 1100px;
-    border: 0;
-    display: block;
-  }
-  .rsvp-placeholder {
-    padding: 3.5rem 2rem;
+    padding: 3rem 2rem 2.5rem;
     text-align: center;
-    background:
-      repeating-linear-gradient(
-        135deg,
-        var(--cream) 0 12px,
-        var(--white) 12px 24px
-      );
+    box-shadow: 0 4px 18px rgba(42,34,24,0.05);
+    position: relative;
+    overflow: hidden;
   }
-  .rsvp-placeholder-icon {
+  .rsvp-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 50% at 50% 0%, rgba(184,150,90,0.10) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .rsvp-cta-icon {
     font-size: 2.5rem;
     display: block;
     margin-bottom: 1rem;
+    position: relative;
   }
-  .rsvp-placeholder-title {
+  .rsvp-cta-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     color: var(--dark);
     font-weight: 400;
     margin-bottom: 0.75rem;
+    position: relative;
   }
-  .rsvp-placeholder-text {
-    font-size: 0.9rem;
+  .rsvp-cta-text {
+    font-size: 0.92rem;
     color: var(--text-light);
     line-height: 1.7;
-    margin-bottom: 1.5rem;
-    max-width: 380px;
+    margin-bottom: 1.75rem;
+    max-width: 460px;
     margin-left: auto;
     margin-right: auto;
+    position: relative;
   }
+  .rsvp-cta-btn {
+    padding: 0.95rem 2.25rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    position: relative;
+    box-shadow: 0 4px 14px rgba(184,150,90,0.3);
+  }
+  .rsvp-cta-btn:hover {
+    box-shadow: 0 6px 20px rgba(184,150,90,0.45);
+  }
+  .rsvp-cta-fallback {
+    margin-top: 1.5rem;
+    font-size: 0.75rem;
+    color: var(--text-light);
+    position: relative;
+  }
+  .rsvp-cta-fallback a {
+    color: var(--gold);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .rsvp-cta-fallback a:hover { color: var(--dark); }
+
+  .rsvp-warning {
+    margin-top: 1.5rem;
+    background: linear-gradient(135deg, #fff4e0, #faefd6);
+    border: 1px solid #e0b870;
+    border-left: 4px solid var(--gold);
+    border-radius: 2px;
+    padding: 1.25rem 1.5rem;
+    font-size: 0.88rem;
+    line-height: 1.75;
+    color: var(--text);
+  }
+  .rsvp-warning strong { color: var(--gold); font-weight: 500; }
 
   /* ── APPS GRID ── */
   .apps-grid {
@@ -1943,9 +1975,9 @@
         <span data-lang-inline="lt">Dovana</span>
       </div>
       <div class="card-body">
-        <span data-lang-inline="nl">Jullie aanwezigheid is voor ons het mooiste cadeau — een cadeau is zeker <strong>niet verplicht</strong>. Mochten jullie ons toch graag iets willen geven, dan stellen we een <strong>bijdrage in een envelopje</strong> het meest op prijs. Daarmee sparen we voor onze huwelijksreis. ✈️ Details volgen binnenkort.</span>
-        <span data-lang-inline="en">Your presence is the greatest gift to us — a gift is certainly <strong>not required</strong>. If you'd still like to give us something, a <strong>contribution in an envelope</strong> is most appreciated. It helps us save for our honeymoon. ✈️ Details to follow soon.</span>
-        <span data-lang-inline="lt">Jūsų dalyvavimas mums yra gražiausia dovana — dovana <strong>nėra būtina</strong>. Jei vis dėlto norėtumėte ką nors padovanoti, labiausiai vertintume <strong>piniginę dovaną vokelyje</strong>. Tai padės mums susitaupyti medaus mėnesiui. ✈️ Detalės netrukus.</span>
+        <span data-lang-inline="nl">Mochten jullie ons graag iets willen geven, dan stellen we een <strong>bijdrage in een envelopje</strong> het meest op prijs. Daarmee sparen we voor onze huwelijksreis. ✈️</span>
+        <span data-lang-inline="en">If you'd like to give us something, a <strong>contribution in an envelope</strong> is most appreciated. It helps us save for our honeymoon. ✈️</span>
+        <span data-lang-inline="lt">Jei norėtumėte mums ką nors padovanoti, labiausiai vertintume <strong>piniginę dovaną vokelyje</strong>. Tai padės mums susitaupyti medaus mėnesiui. ✈️</span>
       </div>
     </div>
 
@@ -2361,53 +2393,51 @@
   <div data-lang="nl">
     <p class="section-label">Aanmelden</p>
     <h2 class="section-title">RSVP</h2>
-    <p class="section-intro">Laat ons vóór <strong>1 juni 2026</strong> weten of je erbij bent — vul het formulier hieronder in. Geef ook door of je wilt overnachten op Giletos Sodyba en eventuele dieetwensen.</p>
+    <p class="section-intro">Dit formulier is voor gasten die <strong>nog niet hebben gereageerd</strong>. Laat ons vóór <strong>1 juni 2026</strong> weten of je erbij bent. Geef ook door of je wilt overnachten op Giletos Sodyba en eventuele dieetwensen.</p>
   </div>
 
   <div data-lang="en">
     <p class="section-label">Confirm attendance</p>
     <h2 class="section-title">RSVP</h2>
-    <p class="section-intro">Please let us know before <strong>1 June 2026</strong> whether you'll be joining us — fill in the form below. Include any dietary needs and whether you'd like to stay over at Giletos Sodyba.</p>
+    <p class="section-intro">This form is for guests who <strong>haven't responded yet</strong>. Please let us know before <strong>1 June 2026</strong> whether you'll be joining us. Include any dietary needs and whether you'd like to stay over at Giletos Sodyba.</p>
   </div>
 
   <div data-lang="lt">
     <p class="section-label">Patvirtinimas</p>
     <h2 class="section-title">RSVP</h2>
-    <p class="section-intro">Praneškite mums iki <strong>2026 m. birželio 1 d.</strong>, ar dalyvausite — užpildykite formą žemiau. Pažymėkite ir mitybos poreikius bei nakvynės pageidavimus Giletos Sodyboje.</p>
+    <p class="section-intro">Ši forma skirta svečiams, kurie <strong>dar nepatvirtino dalyvavimo</strong>. Praneškite mums iki <strong>2026 m. birželio 1 d.</strong>, ar dalyvausite. Pažymėkite ir mitybos poreikius bei nakvynės pageidavimus Giletos Sodyboje.</p>
   </div>
 
-  <!--
-    ═══ HOE DEZE FORM TE KOPPELEN ═══
-    1. Maak een Google Form met de velden uit het plan
-       (naam, e-mail, aanwezigheid, +1, dieetwensen, overnachting Giletos, overnachting Kaunas vrijdag, opmerking).
-    2. Klik in Google Forms op "Verzenden" → tabblad "</>" (Embed HTML).
-    3. Kopieer ALLEEN de URL uit src="..." en plak hieronder bij data-form-url.
-    4. Verwijder de .rsvp-placeholder div en zet de iframe terug.
-  -->
-  <div class="rsvp-frame">
-    <div class="rsvp-placeholder">
-      <span class="rsvp-placeholder-icon">📝</span>
-      <h3 class="rsvp-placeholder-title">
-        <span data-lang-inline="nl">Het RSVP-formulier komt binnenkort online</span>
-        <span data-lang-inline="en">The RSVP form will be online soon</span>
-        <span data-lang-inline="lt">RSVP forma greitai bus paskelbta</span>
-      </h3>
-      <p class="rsvp-placeholder-text">
-        <span data-lang-inline="nl">Voor nu kun je je aanmelden via een mailtje aan Dylan of Milana.</span>
-        <span data-lang-inline="en">For now, please RSVP by email to Dylan or Milana.</span>
-        <span data-lang-inline="lt">Kol kas patvirtinkite dalyvavimą el. paštu Dylan'ui arba Milanai.</span>
-      </p>
-      <a href="mailto:dgrefte@gmail.com?subject=RSVP%20Dylan%20%26%20Milana%2022.08.2026&body=Hi%20Dylan%20%26%20Milana%2C%0A%0A-%20Naam%3A%0A-%20Aanwezigheid%20(Ja%2FNee%2FMisschien)%3A%0A-%20Eventuele%20%2B1%3A%0A-%20Dieetwensen%3A%0A-%20Overnachten%20op%20Giletos%20Sodyba%20(Ja%2FNee)%3A%0A-%20Overnachten%20in%20Kaunas%20vrijdag%2021%20aug%20(Ja%2FNee)%3A%0A-%20Opmerking%3A%0A%0AMet%20liefs%2C" class="btn btn-gold">
-        <span data-lang-inline="nl">Stuur een mail →</span>
-        <span data-lang-inline="en">Send an email →</span>
-        <span data-lang-inline="lt">Siųsti el. laišką →</span>
-      </a>
-    </div>
-    <!--
-    Wanneer de Google Form klaar is, vervang het hele .rsvp-placeholder blok hierboven door:
+  <div class="rsvp-cta">
+    <span class="rsvp-cta-icon">📝</span>
+    <h3 class="rsvp-cta-title">
+      <span data-lang-inline="nl">Vul het RSVP-formulier in</span>
+      <span data-lang-inline="en">Fill in the RSVP form</span>
+      <span data-lang-inline="lt">Užpildykite RSVP formą</span>
+    </h3>
+    <p class="rsvp-cta-text">
+      <span data-lang-inline="nl">Het kost je nog geen 2 minuten. Eén formulier voor aanwezigheid, +1, dieetwensen en overnachting in één keer.</span>
+      <span data-lang-inline="en">Takes less than 2 minutes. One form covers attendance, plus-one, dietary needs and accommodation.</span>
+      <span data-lang-inline="lt">Užtruks mažiau nei 2 minutes. Viena forma apima dalyvavimą, palydovą, mitybos poreikius ir nakvynę.</span>
+    </p>
+    <a href="https://forms.gle/endZnLb8nd6BLEMCA" target="_blank" rel="noopener" class="btn btn-gold rsvp-cta-btn">
+      <span data-lang-inline="nl">Open formulier →</span>
+      <span data-lang-inline="en">Open form →</span>
+      <span data-lang-inline="lt">Atidaryti formą →</span>
+    </a>
+    <p class="rsvp-cta-fallback">
+      <span data-lang-inline="nl">Lukt het niet? Stuur dan een <a href="mailto:dgrefte@gmail.com?subject=RSVP%20Dylan%20%26%20Milana%2022.08.2026">mailtje</a> aan Dylan of Milana.</span>
+      <span data-lang-inline="en">Trouble with the form? <a href="mailto:dgrefte@gmail.com?subject=RSVP%20Dylan%20%26%20Milana%2022.08.2026">Email</a> Dylan or Milana instead.</span>
+      <span data-lang-inline="lt">Nepavyksta? Parašykite <a href="mailto:dgrefte@gmail.com?subject=RSVP%20Dylan%20%26%20Milana%2022.08.2026">laišką</a> Dylanui arba Milanai.</span>
+    </p>
+  </div>
 
-    <iframe src="JOUW_GOOGLE_FORM_EMBED_URL_HIER" loading="lazy" title="RSVP">Loading…</iframe>
-    -->
+  <div class="rsvp-warning">
+    <p>
+      <span data-lang-inline="nl">⚠️ <strong>Belangrijk:</strong> zonder reactie kunnen we helaas geen rekening met je houden — geen plek aan tafel, geen vervoer, geen overnachting. Vul het formulier dus alsjeblieft in, ook als je niet kunt komen!</span>
+      <span data-lang-inline="en">⚠️ <strong>Important:</strong> without a response we unfortunately can't reserve a place for you — no seat, no transport, no room. Please fill in the form, even if you can't make it!</span>
+      <span data-lang-inline="lt">⚠️ <strong>Svarbu:</strong> be jūsų atsakymo, deja, negalėsime į jus atsižvelgti — nei vietos prie stalo, nei transporto, nei nakvynės. Užpildykite formą net jei negalite atvykti!</span>
+    </p>
   </div>
 </section>
 
@@ -2501,9 +2531,9 @@
       <span data-lang-inline="lt">Ar turiu patvirtinti dalyvavimą?</span>
     </div>
     <div class="faq-a">
-      <span data-lang-inline="nl">Ja, graag vóór <strong>1 juni 2026</strong>! Vul het formulier in op de <a href="#rsvp">RSVP-sectie</a> — daar kun je je aanwezigheid, eventuele +1, dieetwensen en overnachting in één keer doorgeven.</span>
-      <span data-lang-inline="en">Yes, please RSVP before <strong>1 June 2026</strong>! Use the form in the <a href="#rsvp">RSVP section</a> — you can confirm attendance, plus-one, dietary needs and accommodation all at once.</span>
-      <span data-lang-inline="lt">Taip, prašome iki <strong>2026 m. birželio 1 d.</strong>! Užpildykite formą <a href="#rsvp">RSVP skiltyje</a> — vienu kartu pažymėkite dalyvavimą, palydovą, mitybos pageidavimus ir nakvynę.</span>
+      <span data-lang-inline="nl">Ja — alleen als je nog niet hebt gereageerd. Doe het vóór <strong>1 juni 2026</strong> via het <a href="#rsvp">RSVP-formulier</a>. Zonder reactie kunnen we helaas geen rekening met je houden, dus vul het zeker in!</span>
+      <span data-lang-inline="en">Yes — only if you haven't responded yet. Please do so before <strong>1 June 2026</strong> via the <a href="#rsvp">RSVP form</a>. Without a response we unfortunately can't reserve a place for you, so please fill it in!</span>
+      <span data-lang-inline="lt">Taip — tik jei dar nepatvirtinote. Užpildykite iki <strong>2026 m. birželio 1 d.</strong> per <a href="#rsvp">RSVP formą</a>. Be jūsų atsakymo, deja, negalėsime į jus atsižvelgti, todėl būtinai užpildykite!</span>
     </div>
   </div>
 
