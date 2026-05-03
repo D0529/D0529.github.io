@@ -4,6 +4,30 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dylan & Milana — 22.08.2026 · Kaunas, Lithuania</title>
+
+<meta name="description" content="Dylan & Milana — wij gaan trouwen op 22 augustus 2026 in Kaunas, Litouwen. Alle reisinformatie en het programma op één plek.">
+<meta name="theme-color" content="#b8965a">
+<meta name="robots" content="noindex, nofollow">
+
+<!-- Open Graph (WhatsApp / iMessage / Facebook share preview) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Dylan & Milana — 22.08.2026 · Kaunas">
+<meta property="og:description" content="Wij gaan trouwen in Kaunas, Litouwen — alle reisinfo en het programma.">
+<meta property="og:image" content="wedding-photos/Giletos-sodyba.jpg">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:locale:alternate" content="en_GB">
+<meta property="og:locale:alternate" content="lt_LT">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Dylan & Milana — 22.08.2026">
+<meta name="twitter:description" content="Wij gaan trouwen in Kaunas, Litouwen.">
+<meta name="twitter:image" content="wedding-photos/Giletos-sodyba.jpg">
+
+<!-- Favicon (SVG werkt in alle moderne browsers; vervang door eigen .png als gewenst) -->
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="favicon.svg">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -224,34 +248,34 @@
     padding-bottom: 0.5rem;
   }
 
-  .scroll-hint {
-    position: absolute;
-    bottom: 2.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--gold);
-    font-size: 0.65rem;
-    letter-spacing: 0.25em;
+  /* ── HERO ADD-TO-CALENDAR ── */
+  .hero-cal {
+    margin-top: 2.75rem;
+    text-align: center;
+    animation: fadeUp 1s ease 0.8s both;
+  }
+  .hero-cal-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.3em;
     text-transform: uppercase;
-    animation: fadeUp 1s ease 1.2s both;
+    color: var(--text-light);
+    margin-bottom: 0.85rem;
   }
-
-  .scroll-hint::after {
-    content: '';
-    display: block;
-    width: 1px;
-    height: 40px;
-    background: linear-gradient(to bottom, var(--gold), transparent);
-    animation: scrollLine 2s ease-in-out infinite;
+  .hero-cal-buttons {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
   }
-
-  @keyframes scrollLine {
-    0%, 100% { transform: scaleY(1); opacity: 1; }
-    50% { transform: scaleY(0.5); opacity: 0.4; }
+  .hero-cal-btn {
+    background: var(--white);
+    color: var(--gold);
+    border: 1px solid var(--gold-pale);
+  }
+  .hero-cal-btn:hover {
+    background: var(--gold);
+    color: var(--white);
+    border-color: var(--gold);
   }
 
   @keyframes fadeUp {
@@ -766,6 +790,53 @@
   }
   .stay-actions .btn { padding: 0.5rem 0.95rem; font-size: 0.65rem; }
 
+  /* ── RSVP ── */
+  .rsvp-frame {
+    background: var(--white);
+    border: 1px solid var(--gold-pale);
+    border-radius: 2px;
+    padding: 0.5rem;
+    position: relative;
+    box-shadow: 0 4px 18px rgba(42,34,24,0.05);
+  }
+  .rsvp-frame iframe {
+    width: 100%;
+    min-height: 1100px;
+    border: 0;
+    display: block;
+  }
+  .rsvp-placeholder {
+    padding: 3.5rem 2rem;
+    text-align: center;
+    background:
+      repeating-linear-gradient(
+        135deg,
+        var(--cream) 0 12px,
+        var(--white) 12px 24px
+      );
+  }
+  .rsvp-placeholder-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 1rem;
+  }
+  .rsvp-placeholder-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    color: var(--dark);
+    font-weight: 400;
+    margin-bottom: 0.75rem;
+  }
+  .rsvp-placeholder-text {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    max-width: 380px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   /* ── APPS GRID ── */
   .apps-grid {
     display: grid;
@@ -1030,6 +1101,87 @@
 
   .photo-coming-note span { color: var(--gold); }
 
+  /* ── LIGHTBOX ── */
+  .gallery-item { cursor: zoom-in; }
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 300;
+    background: rgba(20,16,12,0.94);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+  .lightbox.open {
+    display: flex;
+    opacity: 1;
+  }
+  .lightbox-figure {
+    max-width: min(1100px, 92vw);
+    max-height: 88vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .lightbox-figure img {
+    max-width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 2px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+  .lightbox-caption {
+    color: rgba(248,244,236,0.75);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+    letter-spacing: 0.04em;
+    text-align: center;
+  }
+  .lightbox-btn {
+    position: absolute;
+    background: rgba(248,244,236,0.08);
+    border: 1px solid rgba(184,150,90,0.3);
+    color: var(--cream);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s, border-color 0.3s, transform 0.3s;
+  }
+  .lightbox-btn:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--white);
+  }
+  .lightbox-close {
+    top: 1.25rem;
+    right: 1.25rem;
+    font-size: 1.6rem;
+  }
+  .lightbox-prev { left: 1.25rem; top: 50%; transform: translateY(-50%); }
+  .lightbox-next { right: 1.25rem; top: 50%; transform: translateY(-50%); }
+  .lightbox-prev:hover { transform: translateY(-50%) scale(1.08); }
+  .lightbox-next:hover { transform: translateY(-50%) scale(1.08); }
+
+  @media (max-width: 600px) {
+    .lightbox-btn { width: 40px; height: 40px; }
+    .lightbox-prev { left: 0.5rem; }
+    .lightbox-next { right: 0.5rem; }
+    .lightbox-close { top: 0.5rem; right: 0.5rem; }
+  }
+
   /* ── FAQ ── */
   .faq-item { border-bottom: 1px solid var(--gold-pale); padding: 1.25rem 0; }
 
@@ -1242,6 +1394,7 @@
     <li><a href="#wedding"><span data-lang-inline="nl">Bruiloft</span><span data-lang-inline="en">Wedding</span><span data-lang-inline="lt">Vestuvės</span></a></li>
     <li class="traveler-only"><a href="#kaunas">Kaunas</a></li>
     <li><a href="#photos"><span data-lang-inline="nl">Foto's</span><span data-lang-inline="en">Photos</span><span data-lang-inline="lt">Nuotraukos</span></a></li>
+    <li><a href="#rsvp">RSVP</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
   <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu" aria-expanded="false">
@@ -1297,7 +1450,29 @@
     </div>
   </div>
 
-  <div class="scroll-hint">Scroll</div>
+  <!-- ADD TO CALENDAR -->
+  <div class="hero-cal">
+    <p class="hero-cal-label">
+      <span data-lang-inline="nl">Zet de datum in je agenda</span>
+      <span data-lang-inline="en">Save the date</span>
+      <span data-lang-inline="lt">Įsidėk į kalendorių</span>
+    </p>
+    <div class="hero-cal-buttons">
+      <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Dylan%20%26%20Milana%20%E2%80%94%20Wedding&dates=20260822T120000Z/20260823T020000Z&details=Wij%20gaan%20trouwen%20in%20Kaunas%2C%20Litouwen.%20Verzamelen%20vanaf%2015%3A00%20lokale%20tijd%20in%20centrum%20Kaunas.&location=Giletos%20Sodyba%2C%20%C5%BDied%C5%B3%20g.%201%2C%20Mozuriskiu%20kaimas%2C%20Kauno%20raj.%2C%20Lithuania" target="_blank" class="btn btn-outline hero-cal-btn">
+        <span aria-hidden="true">📅</span>
+        <span data-lang-inline="nl">Google Agenda</span>
+        <span data-lang-inline="en">Google Calendar</span>
+        <span data-lang-inline="lt">Google kalendorius</span>
+      </a>
+      <a href="wedding.ics" download class="btn btn-outline hero-cal-btn">
+        <span aria-hidden="true">🍎</span>
+        <span data-lang-inline="nl">Apple / Outlook</span>
+        <span data-lang-inline="en">Apple / Outlook</span>
+        <span data-lang-inline="lt">Apple / Outlook</span>
+      </a>
+    </div>
+  </div>
+
 </div>
 
 <!-- ═══════════════════════════════════════════════════════════
@@ -2171,11 +2346,11 @@
         <div class="gallery-caption"><span data-lang-inline="nl">Giletos Sodyba</span><span data-lang-inline="en">Giletos Sodyba</span><span data-lang-inline="lt">Giletos Sodyba</span></div>
       </div>
       <div class="gallery-item">
-        <img src="wedding-photos/ceremony location.jpg" alt="Ceremony location" loading="lazy">
+        <img src="wedding-photos/ceremony-location.jpg" alt="Ceremony location" loading="lazy">
         <div class="gallery-caption"><span data-lang-inline="nl">Ceremoniepunt</span><span data-lang-inline="en">Ceremony spot</span><span data-lang-inline="lt">Ceremonijos vieta</span></div>
       </div>
       <div class="gallery-item">
-        <img src="wedding-photos/Kaunas castle.jpg" alt="Kaunas Castle" loading="lazy">
+        <img src="wedding-photos/kaunas-castle.jpg" alt="Kaunas Castle" loading="lazy">
         <div class="gallery-caption"><span data-lang-inline="nl">Kaunas Kasteel</span><span data-lang-inline="en">Kaunas Castle</span><span data-lang-inline="lt">Kauno pilis</span></div>
       </div>
       <div class="gallery-item">
@@ -2195,6 +2370,64 @@
     </p>
   </div>
 </div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     RSVP — visible to all guests
+     ═══════════════════════════════════════════════════════════ -->
+<section id="rsvp">
+
+  <div data-lang="nl">
+    <p class="section-label">Aanmelden</p>
+    <h2 class="section-title">RSVP</h2>
+    <p class="section-intro">Laat ons vóór <strong>1 juni 2026</strong> weten of je erbij bent — vul het formulier hieronder in. Geef ook door of je wilt overnachten op Giletos Sodyba en eventuele dieetwensen.</p>
+  </div>
+
+  <div data-lang="en">
+    <p class="section-label">Confirm attendance</p>
+    <h2 class="section-title">RSVP</h2>
+    <p class="section-intro">Please let us know before <strong>1 June 2026</strong> whether you'll be joining us — fill in the form below. Include any dietary needs and whether you'd like to stay over at Giletos Sodyba.</p>
+  </div>
+
+  <div data-lang="lt">
+    <p class="section-label">Patvirtinimas</p>
+    <h2 class="section-title">RSVP</h2>
+    <p class="section-intro">Praneškite mums iki <strong>2026 m. birželio 1 d.</strong>, ar dalyvausite — užpildykite formą žemiau. Pažymėkite ir mitybos poreikius bei nakvynės pageidavimus Giletos Sodyboje.</p>
+  </div>
+
+  <!--
+    ═══ HOE DEZE FORM TE KOPPELEN ═══
+    1. Maak een Google Form met de velden uit het plan
+       (naam, e-mail, aanwezigheid, +1, dieetwensen, overnachting Giletos, overnachting Kaunas vrijdag, opmerking).
+    2. Klik in Google Forms op "Verzenden" → tabblad "</>" (Embed HTML).
+    3. Kopieer ALLEEN de URL uit src="..." en plak hieronder bij data-form-url.
+    4. Verwijder de .rsvp-placeholder div en zet de iframe terug.
+  -->
+  <div class="rsvp-frame">
+    <div class="rsvp-placeholder">
+      <span class="rsvp-placeholder-icon">📝</span>
+      <h3 class="rsvp-placeholder-title">
+        <span data-lang-inline="nl">Het RSVP-formulier komt binnenkort online</span>
+        <span data-lang-inline="en">The RSVP form will be online soon</span>
+        <span data-lang-inline="lt">RSVP forma greitai bus paskelbta</span>
+      </h3>
+      <p class="rsvp-placeholder-text">
+        <span data-lang-inline="nl">Voor nu kun je je aanmelden via een mailtje aan Dylan of Milana.</span>
+        <span data-lang-inline="en">For now, please RSVP by email to Dylan or Milana.</span>
+        <span data-lang-inline="lt">Kol kas patvirtinkite dalyvavimą el. paštu Dylan'ui arba Milanai.</span>
+      </p>
+      <a href="mailto:dgrefte@gmail.com?subject=RSVP%20Dylan%20%26%20Milana%2022.08.2026&body=Hi%20Dylan%20%26%20Milana%2C%0A%0A-%20Naam%3A%0A-%20Aanwezigheid%20(Ja%2FNee%2FMisschien)%3A%0A-%20Eventuele%20%2B1%3A%0A-%20Dieetwensen%3A%0A-%20Overnachten%20op%20Giletos%20Sodyba%20(Ja%2FNee)%3A%0A-%20Overnachten%20in%20Kaunas%20vrijdag%2021%20aug%20(Ja%2FNee)%3A%0A-%20Opmerking%3A%0A%0AMet%20liefs%2C" class="btn btn-gold">
+        <span data-lang-inline="nl">Stuur een mail →</span>
+        <span data-lang-inline="en">Send an email →</span>
+        <span data-lang-inline="lt">Siųsti el. laišką →</span>
+      </a>
+    </div>
+    <!--
+    Wanneer de Google Form klaar is, vervang het hele .rsvp-placeholder blok hierboven door:
+
+    <iframe src="JOUW_GOOGLE_FORM_EMBED_URL_HIER" loading="lazy" title="RSVP">Loading…</iframe>
+    -->
+  </div>
+</section>
 
 <!-- ═══════════════════════════════════════════════════════════
      FAQ — items split by audience
@@ -2286,13 +2519,24 @@
       <span data-lang-inline="lt">Ar turiu patvirtinti dalyvavimą?</span>
     </div>
     <div class="faq-a">
-      <span data-lang-inline="nl">Ja, graag zo snel mogelijk! Neem contact op met Dylan of Milana om je <strong>aanwezigheid</strong> te bevestigen en je eventuele <strong>overnachting</strong> op de bruiloftsdag door te geven.</span>
-      <span data-lang-inline="en">Yes, as soon as possible please! Reach out to Dylan or Milana to confirm your <strong>attendance</strong> and to let us know whether you'd like to <strong>stay overnight</strong> at the venue.</span>
-      <span data-lang-inline="lt">Taip, kuo greičiau! Susisiekite su Dylanu arba Milana, kad patvirtintumėte savo <strong>dalyvavimą</strong> ir <strong>nakvynės poreikį</strong>.</span>
+      <span data-lang-inline="nl">Ja, graag vóór <strong>1 juni 2026</strong>! Vul het formulier in op de <a href="#rsvp">RSVP-sectie</a> — daar kun je je aanwezigheid, eventuele +1, dieetwensen en overnachting in één keer doorgeven.</span>
+      <span data-lang-inline="en">Yes, please RSVP before <strong>1 June 2026</strong>! Use the form in the <a href="#rsvp">RSVP section</a> — you can confirm attendance, plus-one, dietary needs and accommodation all at once.</span>
+      <span data-lang-inline="lt">Taip, prašome iki <strong>2026 m. birželio 1 d.</strong>! Užpildykite formą <a href="#rsvp">RSVP skiltyje</a> — vienu kartu pažymėkite dalyvavimą, palydovą, mitybos pageidavimus ir nakvynę.</span>
     </div>
   </div>
 
 </section>
+
+<!-- LIGHTBOX (foto-modal) -->
+<div class="lightbox" id="lightbox" aria-hidden="true" role="dialog">
+  <button class="lightbox-btn lightbox-close" type="button" aria-label="Sluiten">×</button>
+  <button class="lightbox-btn lightbox-prev" type="button" aria-label="Vorige foto">‹</button>
+  <button class="lightbox-btn lightbox-next" type="button" aria-label="Volgende foto">›</button>
+  <figure class="lightbox-figure">
+    <img alt="" id="lightbox-img">
+    <figcaption class="lightbox-caption" id="lightbox-caption"></figcaption>
+  </figure>
+</div>
 
 <!-- FOOTER -->
 <div class="footer-section">
@@ -2388,6 +2632,78 @@
       if (!isOpen) item.classList.add('open');
     });
   });
+
+  // ── LIGHTBOX ──
+  (function initLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightbox-img');
+    const lbCap = document.getElementById('lightbox-caption');
+    const closeBtn = lightbox.querySelector('.lightbox-close');
+    const prevBtn = lightbox.querySelector('.lightbox-prev');
+    const nextBtn = lightbox.querySelector('.lightbox-next');
+    const items = [...document.querySelectorAll('.gallery-item img')];
+    if (items.length === 0) return;
+
+    let idx = 0;
+
+    function captionFor(i) {
+      const captionWrap = items[i].closest('.gallery-item')?.querySelector('.gallery-caption');
+      if (!captionWrap) return items[i].alt || '';
+      const visible = [...captionWrap.querySelectorAll('[data-lang-inline]')]
+        .find(s => getComputedStyle(s).display !== 'none');
+      return (visible && visible.textContent.trim()) || items[i].alt || '';
+    }
+
+    function show(i) {
+      idx = (i + items.length) % items.length;
+      lbImg.src = items[idx].src;
+      lbImg.alt = items[idx].alt || '';
+      lbCap.textContent = captionFor(idx);
+    }
+
+    function open(i) {
+      show(i);
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function close() {
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    items.forEach((img, i) => img.addEventListener('click', () => open(i)));
+    closeBtn.addEventListener('click', close);
+    prevBtn.addEventListener('click', () => show(idx - 1));
+    nextBtn.addEventListener('click', () => show(idx + 1));
+
+    // Click outside the figure → close
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) close();
+    });
+
+    // Keyboard
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape') close();
+      else if (e.key === 'ArrowLeft') show(idx - 1);
+      else if (e.key === 'ArrowRight') show(idx + 1);
+    });
+
+    // Touch swipe
+    let touchStartX = null;
+    lightbox.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].clientX;
+    }, { passive: true });
+    lightbox.addEventListener('touchend', (e) => {
+      if (touchStartX === null) return;
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(dx) > 40) show(idx + (dx < 0 ? 1 : -1));
+      touchStartX = null;
+    });
+  })();
 
   // ── SCROLL FADE-IN ──
   const observer = new IntersectionObserver((entries) => {
