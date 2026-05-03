@@ -626,11 +626,197 @@
     filter: sepia(0.1) contrast(1.05);
   }
 
-  .maps-grid {
+  /* Inline map directly under a section's transport list */
+  .map-inline {
+    margin-top: 2.5rem;
+    background: var(--white);
+    box-shadow: 0 4px 18px rgba(42,34,24,0.05);
+  }
+  .map-inline iframe { height: 360px; }
+
+  /* Embedded map inside a card (e.g. venue card) */
+  .map-embed {
+    margin: 0;
+    border: none;
+    border-top: 1px solid var(--gold-pale);
+    border-radius: 0;
+    position: relative;
+  }
+  .map-embed iframe { height: 280px; }
+
+  /* "Open in Google Maps" pill button overlaid on a map */
+  .map-open-btn {
+    position: absolute;
+    bottom: 0.85rem;
+    right: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: var(--white);
+    color: var(--dark);
+    border: 1px solid var(--gold-pale);
+    padding: 0.5rem 0.85rem;
+    border-radius: 999px;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    box-shadow: 0 2px 10px rgba(42,34,24,0.1);
+    transition: background 0.3s, color 0.3s, border-color 0.3s;
+  }
+  .map-open-btn:hover {
+    background: var(--gold);
+    color: var(--white);
+    border-color: var(--gold);
+  }
+  .map-wrapper { position: relative; }
+
+  /* ── STAY (accommodation) ── */
+  .stay-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
-    margin-top: 2rem;
+    margin-top: 1rem;
+  }
+  .stay-card {
+    background: var(--white);
+    border: 1px solid var(--gold-pale);
+    border-radius: 2px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+  }
+  .stay-card:hover {
+    border-color: var(--gold);
+    box-shadow: 0 8px 24px rgba(184,150,90,0.12);
+    transform: translateY(-2px);
+  }
+  .stay-image {
+    position: relative;
+    height: 170px;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--gold-pale), var(--cream-dark));
+  }
+  .stay-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.7s ease;
+  }
+  .stay-card:hover .stay-image img { transform: scale(1.05); }
+  .stay-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(42,34,24,0.05) 0%, rgba(42,34,24,0.45) 100%);
+  }
+  .stay-date {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: var(--white);
+    color: var(--dark);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    padding: 0.35rem 0.8rem;
+    border-radius: 2px;
+    border-left: 3px solid var(--gold);
+    z-index: 2;
+  }
+  .stay-city {
+    position: absolute;
+    bottom: 0.85rem;
+    left: 1rem;
+    color: var(--white);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.7rem;
+    font-style: italic;
+    line-height: 1;
+    z-index: 2;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  }
+  .stay-body {
+    padding: 1.5rem 1.5rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    flex: 1;
+  }
+  .stay-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    color: var(--dark);
+    line-height: 1.3;
+  }
+  .stay-desc {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    line-height: 1.7;
+    flex: 1;
+  }
+  .stay-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.4rem;
+  }
+  .stay-actions .btn { padding: 0.5rem 0.95rem; font-size: 0.65rem; }
+
+  /* ── APPS GRID ── */
+  .apps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.85rem;
+    margin-top: 0.5rem;
+  }
+  .app-tile {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    padding: 1rem 1.1rem;
+    background: var(--cream);
+    border: 1px solid var(--gold-pale);
+    border-radius: 2px;
+    text-decoration: none;
+    color: var(--text);
+    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  }
+  .app-tile:hover {
+    border-color: var(--gold);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(184,150,90,0.15);
+  }
+  .app-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    color: var(--dark);
+    line-height: 1;
+  }
+  .app-desc {
+    font-size: 0.78rem;
+    color: var(--text-light);
+    line-height: 1.55;
+    flex: 1;
+  }
+  .app-stores {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    margin-top: 0.35rem;
+  }
+  .store-tag {
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    background: var(--gold-pale);
+    border: 1px solid #e0c890;
+    padding: 0.18rem 0.5rem;
+    border-radius: 2px;
   }
 
   /* ── CARD ── */
@@ -653,6 +839,77 @@
   }
 
   .card-icon { font-size: 1.5rem; margin-bottom: 0.75rem; display: block; }
+
+  .venue-card { padding: 0; overflow: hidden; }
+  .venue-card .venue-image {
+    height: 260px;
+    overflow: hidden;
+    position: relative;
+  }
+  .venue-card .venue-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 1.2s ease;
+  }
+  .venue-card:hover .venue-image img { transform: scale(1.04); }
+  .venue-card .venue-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 60%, rgba(255,253,248,0.5) 100%);
+  }
+  .venue-card .card-icon,
+  .venue-card .card-title { padding-left: 2.5rem; padding-right: 2.5rem; }
+  .venue-card .card-icon { padding-top: 1.5rem; margin-bottom: 0.5rem; }
+  .venue-card .card-body { padding: 0 2.5rem 2rem; }
+
+  /* ── KAUNAS HERO IMAGE ── */
+  .kaunas-hero {
+    position: relative;
+    height: 220px;
+    border-radius: 2px;
+    overflow: hidden;
+    margin: 1rem 0 2.5rem;
+  }
+  .kaunas-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .kaunas-hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(42,34,24,0.15), transparent 50%, rgba(184,150,90,0.1));
+  }
+
+  /* ── MOBILE HAMBURGER ── */
+  .mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    width: 38px;
+    height: 38px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+  }
+  .mobile-menu-btn span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--gold);
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  .mobile-menu-btn.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .mobile-menu-btn.open span:nth-child(2) { opacity: 0; }
+  .mobile-menu-btn.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
   .card-title {
     font-family: 'Cormorant Garamond', serif;
@@ -699,72 +956,79 @@
 
   /* ── GALLERY ── */
   .gallery-section {
-    background: var(--dark);
+    background: var(--cream-dark);
     padding: 6rem 2rem;
+    position: relative;
+  }
+
+  .gallery-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 50% 40% at 50% 0%, rgba(184,150,90,0.08) 0%, transparent 70%);
+    pointer-events: none;
   }
 
   .gallery-inner {
-    max-width: 900px;
+    max-width: 1100px;
     margin: 0 auto;
+    position: relative;
   }
-
-  .gallery-section .section-label { color: var(--gold-light); }
-
-  .gallery-section .section-title { color: var(--cream); }
-
-  .gallery-section .section-intro { color: rgba(248,244,236,0.5); margin-bottom: 2.5rem; }
 
   .gallery-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 200px 200px;
+    grid-template-rows: 220px 220px;
     gap: 1rem;
   }
 
   .gallery-item {
-    background: rgba(248,244,236,0.05);
-    border: 1px dashed rgba(184,150,90,0.3);
     border-radius: 2px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
     cursor: default;
-    transition: all 0.3s;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
     position: relative;
     overflow: hidden;
+    background: var(--cream);
   }
 
-  .gallery-item:first-child {
-    grid-row: span 2;
+  .gallery-item:first-child { grid-row: span 2; }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.7s ease;
+    filter: saturate(0.95);
   }
 
-  .gallery-item:hover {
-    border-color: rgba(184,150,90,0.6);
-    background: rgba(248,244,236,0.08);
-  }
+  .gallery-item:hover { box-shadow: 0 12px 35px rgba(42,34,24,0.18); }
+  .gallery-item:hover img { transform: scale(1.05); }
 
-  .gallery-placeholder-icon { font-size: 2rem; opacity: 0.4; }
-
-  .gallery-placeholder-text {
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(248,244,236,0.25);
-  }
-
-  .gallery-coming-soon {
+  .gallery-caption {
     position: absolute;
-    bottom: 0.75rem;
-    right: 0.75rem;
-    background: rgba(184,150,90,0.2);
-    color: var(--gold-light);
-    font-size: 0.58rem;
-    letter-spacing: 0.15em;
-    padding: 0.2rem 0.5rem;
-    border-radius: 2px;
+    inset: auto 0 0 0;
+    padding: 1.25rem 1rem 0.85rem;
+    background: linear-gradient(to top, rgba(42,34,24,0.85), transparent);
+    color: var(--white);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-style: italic;
+    letter-spacing: 0.02em;
+    text-align: center;
   }
+
+  .photo-coming-note {
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-light);
+  }
+
+  .photo-coming-note span { color: var(--gold); }
 
   /* ── FAQ ── */
   .faq-item { border-bottom: 1px solid var(--gold-pale); padding: 1.25rem 0; }
@@ -881,19 +1145,80 @@
   body.lang-lt .traveler-only { display: none !important; }
 
   /* ── RESPONSIVE ── */
+  @media (max-width: 820px) {
+    nav { padding: 0 1rem; }
+    .nav-links {
+      position: fixed;
+      top: 94px; /* 36 lang bar + 58 nav */
+      left: 0; right: 0;
+      flex-direction: column;
+      gap: 0;
+      background: var(--cream);
+      border-bottom: 1px solid var(--gold-pale);
+      padding: 0.5rem 0;
+      transform: translateY(-130%);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.35s ease, opacity 0.35s ease;
+      box-shadow: 0 18px 40px rgba(42,34,24,0.12);
+      max-height: calc(100vh - 94px);
+      overflow-y: auto;
+    }
+    .nav-links.open {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .nav-links li { width: 100%; text-align: center; }
+    .nav-links a {
+      display: block;
+      padding: 1rem 1.5rem;
+      font-size: 0.78rem;
+      border-bottom: 1px solid var(--gold-pale);
+    }
+    .nav-links li:last-child a { border-bottom: none; }
+    .mobile-menu-btn { display: flex; }
+  }
+
   @media (max-width: 700px) {
     .airline-grid { grid-template-columns: 1fr; }
     .kaunas-grid { grid-template-columns: 1fr; }
-    .maps-grid { grid-template-columns: 1fr; }
-    .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
-    .gallery-item:first-child { grid-row: span 1; }
-    .nav-links { display: none; }
-    .transport-card { grid-template-columns: 48px 1fr; }
+    .apps-grid { grid-template-columns: 1fr; }
+    .stay-grid { grid-template-columns: 1fr; }
+    .map-inline iframe { height: 280px; }
+    .map-embed iframe { height: 220px; }
+    .map-open-btn { bottom: 0.5rem; right: 0.5rem; padding: 0.4rem 0.7rem; font-size: 0.6rem; }
+    .gallery-grid {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 180px 180px 180px;
+    }
+    .gallery-item:first-child { grid-row: span 1; grid-column: span 2; height: 240px; }
+    .transport-card { grid-template-columns: 48px 1fr; padding: 1.4rem 1.25rem; }
     .transport-actions { grid-column: 1 / -1; flex-direction: row; flex-wrap: wrap; align-items: flex-start; }
-    .weather-block { grid-template-columns: 1fr; text-align: center; }
-    .timeline::before { left: 60px; }
-    .timeline-item { grid-template-columns: 50px 22px 1fr; gap: 0.6rem; }
-    .timeline-time { font-size: 1.15rem; }
+    .transport-meta { gap: 1rem; }
+    .weather-block { grid-template-columns: 1fr; text-align: center; padding: 2rem 1.5rem; }
+    .timeline::before { left: 56px; }
+    .timeline-item { grid-template-columns: 46px 22px 1fr; gap: 0.6rem; }
+    .timeline-time { font-size: 1.1rem; }
+    .lang-bar { padding: 0 1rem; }
+    section { padding: 4rem 1.25rem; }
+    .hero { padding: 110px 1.25rem 3rem; }
+    .countdown { gap: 0.85rem; }
+    .countdown-sep { display: none; }
+    .card { padding: 1.5rem 1.5rem; }
+    .venue-card { padding: 0; }
+    .venue-card .card-icon, .venue-card .card-title { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .venue-card .card-body { padding: 0 1.5rem 1.5rem; }
+    .venue-card .venue-image { height: 200px; }
+    .footer-section { padding: 3.5rem 1.25rem; }
+    .gallery-section { padding: 4rem 1.25rem; }
+  }
+
+  @media (max-width: 420px) {
+    .hero-sub { font-size: 0.7rem; letter-spacing: 0.2em; }
+    .countdown-num { font-size: 2rem; }
+    .gallery-grid { grid-template-columns: 1fr; grid-template-rows: 200px 200px 200px 200px 200px; }
+    .gallery-item:first-child { grid-column: span 1; height: 240px; }
   }
 </style>
 </head>
@@ -912,12 +1237,16 @@
   <ul class="nav-links">
     <li class="traveler-only"><a href="#flights"><span data-lang-inline="nl">Vluchten</span><span data-lang-inline="en">Flights</span><span data-lang-inline="lt">Skrydžiai</span></a></li>
     <li class="traveler-only"><a href="#travel"><span data-lang-inline="nl">Reizen</span><span data-lang-inline="en">Travel</span><span data-lang-inline="lt">Kelionė</span></a></li>
-    <li class="traveler-only"><a href="#kaunas">Kaunas</a></li>
+    <li class="traveler-only"><a href="#stay"><span data-lang-inline="nl">Verblijf</span><span data-lang-inline="en">Stay</span><span data-lang-inline="lt">Nakvynė</span></a></li>
     <li><a href="#schedule"><span data-lang-inline="nl">Programma</span><span data-lang-inline="en">Schedule</span><span data-lang-inline="lt">Programa</span></a></li>
     <li><a href="#wedding"><span data-lang-inline="nl">Bruiloft</span><span data-lang-inline="en">Wedding</span><span data-lang-inline="lt">Vestuvės</span></a></li>
+    <li class="traveler-only"><a href="#kaunas">Kaunas</a></li>
     <li><a href="#photos"><span data-lang-inline="nl">Foto's</span><span data-lang-inline="en">Photos</span><span data-lang-inline="lt">Nuotraukos</span></a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
+  <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- HERO -->
@@ -933,9 +1262,9 @@
     <em>Milana</em>
   </div>
   <p class="hero-sub">
-    <span data-lang-inline="nl">Wij gaan trouwen in<br><strong>Kaunas, Litouwen</strong><br>en we zijn blij dat jij erbij bent.</span>
+    <span data-lang-inline="nl">Wij gaan trouwen in<br><strong>Kaunas, Litouwen</strong><br>en we zijn blij dat jullie erbij zijn.</span>
     <span data-lang-inline="en">We are getting married in<br><strong>Kaunas, Lithuania</strong><br>and we're so glad you'll be there.</span>
-    <span data-lang-inline="lt">Mes tuokiamės<br><strong>Kaune, Lietuvoje</strong><br>ir džiaugiamės, kad būsi su mumis.</span>
+    <span data-lang-inline="lt">Mes tuokiamės<br><strong>Kaune, Lietuvoje</strong><br>ir džiaugiamės, kad būsite kartu su mumis.</span>
   </p>
 
   <!-- COUNTDOWN -->
@@ -982,22 +1311,22 @@
   <div data-lang="nl">
     <p class="section-label">Stap 1</p>
     <h2 class="section-title">Vluchten naar <em>Litouwen</em></h2>
-    <p class="section-intro">Vanuit Eindhoven Airport (EIN) vlieg je rechtstreeks naar Vilnius International Airport (VNO). De vlucht duurt circa 2 uur en 15 minuten. Beide airlines vliegen 3x per week.</p>
+    <p class="section-intro">Vanuit Eindhoven Airport (EIN) vlieg je rechtstreeks naar Vilnius International Airport (VNO). De vlucht duurt circa 2 uur en 15 minuten.</p>
   </div>
 
   <div data-lang="en">
     <p class="section-label">Step 1</p>
     <h2 class="section-title">Flights to <em>Lithuania</em></h2>
-    <p class="section-intro">From Eindhoven Airport (EIN) you can fly directly to Vilnius International Airport (VNO). The flight takes around 2 hours and 15 minutes. Both airlines fly 3 times a week.</p>
+    <p class="section-intro">From Eindhoven Airport (EIN) you can fly directly to Vilnius International Airport (VNO). The flight takes around 2 hours and 15 minutes.</p>
   </div>
 
   <div class="airline-grid">
     <div class="airline-card">
       <div class="airline-name">Wizz Air</div>
       <p class="airline-detail">
-        <span data-lang-inline="nl">3 directe vluchten per week<br>Ma, Wo & Vr · EIN → VNO<br>Tickets vanaf ca. €20 (één weg)</span>
-        <span data-lang-inline="en">3 direct flights per week<br>Mon, Wed & Fri · EIN → VNO<br>Tickets from ~€20 (one way)</span>
-        <span data-lang-inline="lt">3 tiesioginiai skrydžiai per savaitę<br>Pr, Tr & Pn · EIN → VNO<br>Bilietai nuo ~€20 (vienas kelias)</span>
+        <span data-lang-inline="nl">2 directe vluchten per week<br>Ma & Vr · EIN → VNO<br>Tickets vanaf ca. €20 (één weg)</span>
+        <span data-lang-inline="en">2 direct flights per week<br>Mon & Fri · EIN → VNO<br>Tickets from ~€20 (one way)</span>
+        <span data-lang-inline="lt">2 tiesioginiai skrydžiai per savaitę<br>Pr & Pn · EIN → VNO<br>Bilietai nuo ~€20 (vienas kelias)</span>
       </p>
       <a href="https://www.wizzair.com/en-gb/cheap-flights-from-eindhoven-to-vilnius" target="_blank" class="btn btn-gold">
         <span data-lang-inline="nl">Boek bij Wizz Air →</span>
@@ -1022,7 +1351,7 @@
 
   <div class="highlight-box">
     <p>
-      <span data-lang-inline="nl">💡 <strong>Tip:</strong> Boek zo vroeg mogelijk — augustus is hoogseizoen. Let op het bagagebeleid van budget airlines: handbagage is vaak inbegrepen, ruimbagage niet. Kom een dag eerder voor extra rust!</span>
+      <span data-lang-inline="nl">💡 <strong>Tip:</strong> boek zo vroeg mogelijk — augustus is hoogseizoen. Let op het bagagebeleid van budgetmaatschappijen: handbagage is meestal inbegrepen, ruimbagage niet. Een dag eerder aankomen is een aanrader voor wat extra rust!</span>
       <span data-lang-inline="en">💡 <strong>Tip:</strong> Book as early as possible — August is high season. Mind the baggage policies of budget airlines: hand luggage is usually included, but checked bags are not. Arriving a day early is highly recommended!</span>
       <span data-lang-inline="lt">💡 <strong>Patarimas:</strong> Užsakykite kuo anksčiau — rugpjūtis yra aukštasis sezonas. Atkreipkite dėmesį į bagažo taisykles: rankinis bagažas dažnai įskaičiuotas, tačiau registruotas — ne. Atvykite dieną anksčiau!</span>
     </p>
@@ -1046,14 +1375,14 @@
 
   <div class="transport-grid">
 
-    <!-- BUS -->
+    <!-- BUS — OLLEX DIRECT FROM AIRPORT -->
     <div class="transport-card">
       <div class="transport-icon-wrap">🚌</div>
       <div class="transport-content">
         <div class="transport-title">
-          <span data-lang-inline="nl">Directe bus</span>
-          <span data-lang-inline="en">Direct bus</span>
-          <span data-lang-inline="lt">Tiesioginis autobusas</span>
+          <span data-lang-inline="nl">Bus Ollex — direct vanaf vliegveld</span>
+          <span data-lang-inline="en">Bus Ollex — direct from airport</span>
+          <span data-lang-inline="lt">Ollex autobusas — tiesiogiai iš oro uosto</span>
           <div class="transport-badges">
             <span class="badge badge-green">
               <span data-lang-inline="nl">Aanbevolen</span>
@@ -1069,7 +1398,53 @@
         </div>
         <div class="transport-meta">
           <div class="meta-item">
-            <div class="meta-value">~1h15</div>
+            <div class="meta-value">~1h30</div>
+            <div class="meta-label"><span data-lang-inline="nl">Reistijd</span><span data-lang-inline="en">Travel time</span><span data-lang-inline="lt">Kelionės laikas</span></div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-value">€10–13</div>
+            <div class="meta-label"><span data-lang-inline="nl">Prijs</span><span data-lang-inline="en">Price</span><span data-lang-inline="lt">Kaina</span></div>
+          </div>
+        </div>
+        <div class="transport-details">
+          <span data-lang-inline="nl"><strong>Ollex</strong> rijdt rechtstreeks van Vilnius Airport naar Kaunas — geen overstap nodig. De bus vertrekt bij de halte voor de aankomsthal.</span>
+          <span data-lang-inline="en"><strong>Ollex</strong> runs directly from Vilnius Airport to Kaunas — no transfers. The bus leaves from the stop in front of the arrivals hall.</span>
+          <span data-lang-inline="lt"><strong>Ollex</strong> važiuoja tiesiogiai iš Vilniaus oro uosto į Kauną — nereikia persėsti. Išvyksta prie autobusų stotelės priešais atvykimų salę.</span>
+        </div>
+      </div>
+      <div class="transport-actions">
+        <a href="https://www.ollex.lt/ekspresas/Vilniaus-oro-uostas/pirkti-bilieta/Vilnius-Kaunas" target="_blank" class="btn btn-gold">
+          <span data-lang-inline="nl">Boek bij Ollex →</span>
+          <span data-lang-inline="en">Book on Ollex →</span>
+          <span data-lang-inline="lt">Užsakyti per Ollex →</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- BUS — VIA VILNIUS BUS STATION -->
+    <div class="transport-card">
+      <div class="transport-icon-wrap">🚏</div>
+      <div class="transport-content">
+        <div class="transport-title">
+          <span data-lang-inline="nl">Bus via Vilnius busstation</span>
+          <span data-lang-inline="en">Bus via Vilnius bus station</span>
+          <span data-lang-inline="lt">Autobusas per Vilniaus autobusų stotį</span>
+          <div class="transport-badges">
+            <span class="badge badge-blue">
+              <span data-lang-inline="nl">Goedkoopst</span>
+              <span data-lang-inline="en">Cheapest</span>
+              <span data-lang-inline="lt">Pigiausia</span>
+            </span>
+            <span class="badge badge-blue">
+              <span data-lang-inline="nl">1 overstap</span>
+              <span data-lang-inline="en">1 transfer</span>
+              <span data-lang-inline="lt">1 persėdimas</span>
+            </span>
+          </div>
+        </div>
+        <div class="transport-meta">
+          <div class="meta-item">
+            <div class="meta-value">~2h</div>
             <div class="meta-label"><span data-lang-inline="nl">Reistijd</span><span data-lang-inline="en">Travel time</span><span data-lang-inline="lt">Kelionės laikas</span></div>
           </div>
           <div class="meta-item">
@@ -1077,14 +1452,14 @@
             <div class="meta-label"><span data-lang-inline="nl">Prijs</span><span data-lang-inline="en">Price</span><span data-lang-inline="lt">Kaina</span></div>
           </div>
           <div class="meta-item">
-            <div class="meta-value">10x</div>
+            <div class="meta-value">10x+</div>
             <div class="meta-label"><span data-lang-inline="nl">Per dag</span><span data-lang-inline="en">Per day</span><span data-lang-inline="lt">Per dieną</span></div>
           </div>
         </div>
         <div class="transport-details">
-          <span data-lang-inline="nl">Operator <strong>Ollex</strong> rijdt rechtstreeks van Vilnius Airport naar het centrum van Kaunas. Vertrek bij de bushalte bij de aankomsthal. Koop tickets online voor de beste prijs.</span>
-          <span data-lang-inline="en">Operator <strong>Ollex</strong> runs direct from Vilnius Airport to Kaunas city centre. Departs from the bus stop near the arrivals hall. Buy tickets online for the best price.</span>
-          <span data-lang-inline="lt">Operatorius <strong>Ollex</strong> važiuoja tiesiogiai iš Vilniaus oro uosto į Kauno centrą. Išvyksta prie autobusų stotelės prie atvykimų salės. Pirkite bilietus internetu už geriausią kainą.</span>
+          <span data-lang-inline="nl">Neem eerst een lokale bus naar het <strong>busstation van Vilnius</strong> (centrum) — gebruik de <strong>Trafi</strong>-app voor de tijden. Vanaf het busstation rijden er regelmatig bussen naar Kaunas. Tickets via <strong>Autobusu Bilietai</strong>.</span>
+          <span data-lang-inline="en">First take a local bus to <strong>Vilnius bus station</strong> (city centre) — use the <strong>Trafi</strong> app to plan it. From there, buses to Kaunas run regularly. Tickets via <strong>Autobusu Bilietai</strong>.</span>
+          <span data-lang-inline="lt">Pirmiausia sėskite į vietinį autobusą iki <strong>Vilniaus autobusų stoties</strong> (centras) — naudokite <strong>Trafi</strong> programėlę. Iš stoties reguliariai važiuoja autobusai į Kauną. Bilietai per <strong>Autobusu Bilietai</strong>.</span>
         </div>
       </div>
       <div class="transport-actions">
@@ -1093,10 +1468,10 @@
           <span data-lang-inline="en">Buy ticket →</span>
           <span data-lang-inline="lt">Pirkti bilietą →</span>
         </a>
-        <a href="https://www.ollex.lt" target="_blank" class="btn btn-outline">
-          <span data-lang-inline="nl">Ollex website</span>
-          <span data-lang-inline="en">Ollex website</span>
-          <span data-lang-inline="lt">Ollex svetainė</span>
+        <a href="https://www.trafi.com/vilnius" target="_blank" class="btn btn-outline">
+          <span data-lang-inline="nl">Trafi-app</span>
+          <span data-lang-inline="en">Trafi app</span>
+          <span data-lang-inline="lt">Trafi programėlė</span>
         </a>
       </div>
     </div>
@@ -1143,10 +1518,15 @@
         </div>
       </div>
       <div class="transport-actions">
-        <a href="https://www.litrail.lt" target="_blank" class="btn btn-gold">
-          <span data-lang-inline="nl">Koop treinticket →</span>
-          <span data-lang-inline="en">Buy train ticket →</span>
-          <span data-lang-inline="lt">Pirkti bilietus →</span>
+        <a href="https://bilietas.ltglink.lt/" target="_blank" class="btn btn-gold">
+          <span data-lang-inline="nl">Boek bij LTG Link →</span>
+          <span data-lang-inline="en">Book on LTG Link →</span>
+          <span data-lang-inline="lt">Užsakyti LTG Link →</span>
+        </a>
+        <a href="https://www.litrail.lt" target="_blank" class="btn btn-outline">
+          <span data-lang-inline="nl">Litrail.lt</span>
+          <span data-lang-inline="en">Litrail.lt</span>
+          <span data-lang-inline="lt">Litrail.lt</span>
         </a>
       </div>
     </div>
@@ -1199,17 +1579,388 @@
 
   </div>
 
-  <!-- MAPS -->
-  <div class="maps-grid">
-    <div class="map-wrapper">
-      <div class="map-label">📍 Vilnius Airport (VNO)</div>
-      <iframe src="https://maps.google.com/maps?q=Vilnius+International+Airport,+VNO&output=embed" loading="lazy" title="Vilnius Airport"></iframe>
+  <!-- MAP — Vilnius Station -->
+  <div class="map-wrapper map-inline">
+    <div class="map-label">
+      📍 Vilnius Station — <span data-lang-inline="nl">trein &amp; busstation</span><span data-lang-inline="en">train &amp; bus station</span><span data-lang-inline="lt">traukinių ir autobusų stotis</span>
     </div>
-    <div class="map-wrapper">
-      <div class="map-label">📍 Giletos Sodyba · Kaunas</div>
-      <iframe src="https://maps.google.com/maps?q=Žiedų+g.+1,+Mozūriškių+kaimas,+Kauno+raj.&output=embed" loading="lazy" title="Giletos Sodyba"></iframe>
+    <iframe src="https://maps.google.com/maps?q=Vilniaus+autobusu+stotis,+Sodu+g.+22,+Vilnius&output=embed" loading="lazy" title="Vilnius Station"></iframe>
+    <a href="https://www.google.com/maps/place/Vilniaus+autobusų+stotis/@54.6705,25.2810,16z" target="_blank" class="map-open-btn">
+      <span data-lang-inline="nl">Open in Google Maps ↗</span>
+      <span data-lang-inline="en">Open in Google Maps ↗</span>
+      <span data-lang-inline="lt">Atidaryti Google Maps ↗</span>
+    </a>
+  </div>
+</section>
+
+<!-- STAY: accommodation tips for travellers -->
+<section id="stay" class="traveler-only" style="padding-top:0;">
+
+  <div data-lang="nl">
+    <p class="section-label">Stap 3</p>
+    <h2 class="section-title">Waar te <em>overnachten</em></h2>
+    <p class="section-intro">Voor wie een paar dagen langer blijft hebben we twee aanraders: vrijdagavond in Kaunas, zondagavond in Vilnius. Op de bruiloftsdag zelf kun je gratis blijven slapen op Giletos Sodyba (zie de FAQ).</p>
+  </div>
+
+  <div data-lang="en">
+    <p class="section-label">Step 3</p>
+    <h2 class="section-title">Where to <em>stay</em></h2>
+    <p class="section-intro">For those staying a few extra days, we have two suggestions: Kaunas on Friday night, Vilnius on Sunday night. On the wedding day itself you can stay over for free at Giletos Sodyba (see the FAQ).</p>
+  </div>
+
+  <div class="stay-grid">
+
+    <!-- FRIDAY 21 — KAUNAS -->
+    <div class="stay-card">
+      <div class="stay-image">
+        <span class="stay-date">
+          <span data-lang-inline="nl">Vr 21 aug</span>
+          <span data-lang-inline="en">Fri 21 Aug</span>
+          <span data-lang-inline="lt">Pn 21 rugpj.</span>
+        </span>
+        <img src="wedding-photos/kaunas-square.jpg" alt="Kaunas" loading="lazy">
+        <span class="stay-city">Kaunas</span>
+      </div>
+      <div class="stay-body">
+        <div class="stay-title">
+          <span data-lang-inline="nl">Avond vóór de bruiloft</span>
+          <span data-lang-inline="en">The evening before the wedding</span>
+          <span data-lang-inline="lt">Vakarą prieš vestuves</span>
+        </div>
+        <p class="stay-desc">
+          <span data-lang-inline="nl">Wij raden aan om vrijdagavond in <strong>Kaunas</strong> te overnachten, zodat je zaterdag ontspannen op tijd bent bij het verzamelpunt in het centrum. Boek bij voorkeur in of vlakbij de oude stad (Senamiestis).</span>
+          <span data-lang-inline="en">We recommend spending Friday night in <strong>Kaunas</strong> so you can comfortably reach the meeting point in the city centre on Saturday. Aim for somewhere in or near the old town (Senamiestis).</span>
+          <span data-lang-inline="lt">Rekomenduojame penktadienio vakarą praleisti <strong>Kaune</strong> — taip be skubėjimo šeštadienį spėsite į susitikimo vietą centre. Geriausia rinktis viešbutį senamiestyje (Senamiestis) ar netoli jo.</span>
+        </p>
+        <div class="stay-actions">
+          <a href="https://www.booking.com/searchresults.html?ss=Kaunas%2C+Lithuania&checkin=2026-08-21&checkout=2026-08-22&group_adults=2" target="_blank" class="btn btn-gold">
+            <span data-lang-inline="nl">Booking.com →</span>
+            <span data-lang-inline="en">Booking.com →</span>
+            <span data-lang-inline="lt">Booking.com →</span>
+          </a>
+          <a href="https://www.airbnb.com/s/Kaunas--Lithuania/homes?checkin=2026-08-21&checkout=2026-08-22" target="_blank" class="btn btn-outline">
+            <span data-lang-inline="nl">Airbnb →</span>
+            <span data-lang-inline="en">Airbnb →</span>
+            <span data-lang-inline="lt">Airbnb →</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUNDAY 23 — VILNIUS -->
+    <div class="stay-card">
+      <div class="stay-image">
+        <span class="stay-date">
+          <span data-lang-inline="nl">Zo 23 aug</span>
+          <span data-lang-inline="en">Sun 23 Aug</span>
+          <span data-lang-inline="lt">Sk 23 rugpj.</span>
+        </span>
+        <img src="wedding-photos/kaunas-city-centre-new.jpg" alt="Vilnius" loading="lazy">
+        <span class="stay-city">Vilnius</span>
+      </div>
+      <div class="stay-body">
+        <div class="stay-title">
+          <span data-lang-inline="nl">Avond vóór je terugvlucht</span>
+          <span data-lang-inline="en">The night before flying home</span>
+          <span data-lang-inline="lt">Naktis prieš išvykimą</span>
+        </div>
+        <p class="stay-desc">
+          <span data-lang-inline="nl">Vlieg je maandag 24 augustus terug naar Nederland? Dan raden we aan om zondagnacht in <strong>Vilnius</strong> te slapen — Vilnius Airport ligt vlak naast de stad, dus je ochtend wordt een stuk relaxter.</span>
+          <span data-lang-inline="en">Flying back on Monday 24 August? We suggest spending Sunday night in <strong>Vilnius</strong> — the airport is right next to the city, so your morning will be much more relaxed.</span>
+          <span data-lang-inline="lt">Skrendate atgal pirmadienį, rugpjūčio 24 d.? Rekomenduojame sekmadienio naktį praleisti <strong>Vilniuje</strong> — Vilniaus oro uostas yra šalia miesto, tad rytas bus kur kas ramesnis.</span>
+        </p>
+        <div class="stay-actions">
+          <a href="https://www.booking.com/searchresults.html?ss=Vilnius%2C+Lithuania&checkin=2026-08-23&checkout=2026-08-24&group_adults=2" target="_blank" class="btn btn-gold">
+            <span data-lang-inline="nl">Booking.com →</span>
+            <span data-lang-inline="en">Booking.com →</span>
+            <span data-lang-inline="lt">Booking.com →</span>
+          </a>
+          <a href="https://www.airbnb.com/s/Vilnius--Lithuania/homes?checkin=2026-08-23&checkout=2026-08-24" target="_blank" class="btn btn-outline">
+            <span data-lang-inline="nl">Airbnb →</span>
+            <span data-lang-inline="en">Airbnb →</span>
+            <span data-lang-inline="lt">Airbnb →</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="highlight-box" style="margin-top:2rem;">
+    <p>
+      <span data-lang-inline="nl">🛏️ <strong>Bruiloftsnacht (za 22 aug):</strong> overnachten op Giletos Sodyba is gratis voor onze gasten. Geef in je RSVP aan of je wilt blijven slapen — let op: kamers zijn voor 5–7 personen, dus je deelt met andere gasten.</span>
+      <span data-lang-inline="en">🛏️ <strong>Wedding night (Sat 22 Aug):</strong> staying at Giletos Sodyba is free for our guests. Let us know in your RSVP if you'd like a bed — rooms sleep 5–7, so you'll share with other guests.</span>
+      <span data-lang-inline="lt">🛏️ <strong>Vestuvių naktis (šešt. 22 rugpj.):</strong> nakvynė Giletos Sodyboje mūsų svečiams nemokama. Pažymėkite RSVP, jei norite likti — kambariai skirti 5–7 žmonėms, tad būsite su kitais svečiais.</span>
+    </p>
+  </div>
+
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SCHEDULE — visible to all guests
+     ═══════════════════════════════════════════════════════════ -->
+<section id="schedule" style="background: var(--cream-dark); max-width:100%; padding: 6rem 2rem;">
+  <div style="max-width:900px; margin:0 auto;">
+
+    <div data-lang="nl">
+      <p class="section-label">Programma</p>
+      <h2 class="section-title">Het <em>Programma</em></h2>
+      <p class="section-intro">Zo verloopt de trouwdag — van het verzamelpunt in het centrum van Kaunas tot de champagnetoren om middernacht.</p>
+    </div>
+
+    <div data-lang="en">
+      <p class="section-label">Schedule</p>
+      <h2 class="section-title">The <em>Schedule</em></h2>
+      <p class="section-intro">Here's how the wedding day will unfold — from the meeting point in central Kaunas all the way to the champagne tower at midnight.</p>
+    </div>
+
+    <div data-lang="lt">
+      <p class="section-label">Programa</p>
+      <h2 class="section-title">Dienos <em>programa</em></h2>
+      <p class="section-intro">Štai kaip vyks vestuvių diena — nuo susitikimo Kauno centre iki šampano bokšto vidurnaktį.</p>
+    </div>
+
+    <div class="timeline">
+
+      <div class="timeline-item traveler-only">
+        <div class="timeline-time">15:00</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-title">
+            <span data-lang-inline="nl">Verzamelen in centrum Kaunas</span>
+            <span data-lang-inline="en">Gather at Kaunas city centre</span>
+          </div>
+          <div class="timeline-body">
+            <span data-lang-inline="nl">Gasten verzamelen op een centraal verzamelpunt, van waaruit het vervoer naar Giletos Sodyba wordt geregeld. De exacte locatie volgt dichter bij de datum.</span>
+            <span data-lang-inline="en">Guests gather at a central meeting point in Kaunas, from where transport to Giletos Sodyba is arranged. The exact location will follow closer to the date.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item traveler-only">
+        <div class="timeline-time">15:15</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-title">
+            <span data-lang-inline="nl">Vervoer vertrekt naar de locatie</span>
+            <span data-lang-inline="en">Transport leaves for the venue</span>
+          </div>
+          <div class="timeline-body">
+            <span data-lang-inline="nl">Het vervoer vertrekt richting Giletos Sodyba (rit duurt ca. 25–30 minuten).</span>
+            <span data-lang-inline="en">Transport leaves for Giletos Sodyba (around 25–30 minutes).</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-time">16:00</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-title">
+            <span data-lang-inline="nl">Bruidspaar arriveert</span>
+            <span data-lang-inline="en">Bride & groom arrive</span>
+            <span data-lang-inline="lt">Atvyksta jaunieji</span>
+          </div>
+          <div class="timeline-body">
+            <span data-lang-inline="nl">Dylan & Milana komen aan op de locatie.</span>
+            <span data-lang-inline="en">Dylan & Milana arrive at the venue.</span>
+            <span data-lang-inline="lt">Dylan ir Milana atvyksta į vietą.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item highlight">
+        <div class="timeline-time">17:00</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-title">
+            <span data-lang-inline="nl">Trouwceremonie</span>
+            <span data-lang-inline="en">Wedding ceremony</span>
+            <span data-lang-inline="lt">Vestuvių ceremonija</span>
+          </div>
+          <div class="timeline-body">
+            <span data-lang-inline="nl">De officiële huwelijksceremonie.</span>
+            <span data-lang-inline="en">The official wedding ceremony.</span>
+            <span data-lang-inline="lt">Oficiali vestuvių ceremonija.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-time">17:30</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-title">
+            <span data-lang-inline="nl">Felicitaties</span>
+            <span data-lang-inline="en">Congratulations</span>
+            <span data-lang-inline="lt">Sveikinimai</span>
+          </div>
+          <div class="timeline-body">
+            <span data-lang-inline="nl">Gasten feliciteren het bruidspaar — een korte ronde langs alle gasten.</span>
+            <span data-lang-inline="en">Guests congratulate the couple — a short receiving line.</span>
+            <span data-lang-inline="lt">Svečiai sveikina jaunuosius — trumpa svečių rotacija.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-time">…</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-title">
+            <span data-lang-inline="nl">Het verdere programma volgt</span>
+            <span data-lang-inline="en">The rest of the programme follows</span>
+            <span data-lang-inline="lt">Tada šventė prasideda</span>
+          </div>
+          <div class="timeline-body">
+            <span data-lang-inline="nl">Diner, eerste dans, taart en feest tot diep in de nacht — het volledige programma delen we later.</span>
+            <span data-lang-inline="en">Dinner, first dance, cake and dancing well into the night — we'll share the full programme later.</span>
+            <span data-lang-inline="lt">Vakarienė, šokiai ir šventė iki ryto.</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="schedule-note traveler-only">
+      <p>
+        <span data-lang-inline="nl">⏰ <strong>Belangrijk:</strong> wees vóór 15:00 op het verzamelpunt — het vervoer vertrekt stipt om 15:15 naar Giletos Sodyba. Tijden zijn indicatief en kunnen op de dag zelf licht afwijken.</span>
+        <span data-lang-inline="en">⏰ <strong>Important:</strong> please be at the meeting point before 15:00 — transport leaves promptly at 15:15 for Giletos Sodyba. Times are indicative and may shift slightly on the day itself.</span>
+      </p>
     </div>
   </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     WEDDING INFO — visible to all guests
+     ═══════════════════════════════════════════════════════════ -->
+<section id="wedding">
+
+    <div data-lang="nl">
+      <p class="section-label">Praktische informatie</p>
+      <h2 class="section-title">De <em>Bruiloft</em></h2>
+      <p class="section-intro">Alles wat je moet weten voor een onvergetelijke dag.</p>
+    </div>
+
+    <div data-lang="en">
+      <p class="section-label">Practical information</p>
+      <h2 class="section-title">The <em>Wedding</em></h2>
+      <p class="section-intro">Everything you need to know for an unforgettable day.</p>
+    </div>
+
+    <div data-lang="lt">
+      <p class="section-label">Praktinė informacija</p>
+      <h2 class="section-title"><em>Vestuvės</em></h2>
+      <p class="section-intro">Viskas, ką reikia žinoti neužmirštamai dienai.</p>
+    </div>
+
+    <div class="card venue-card">
+      <div class="venue-image">
+        <img src="wedding-photos/Giletos-sodyba.jpg" alt="Giletos Sodyba" loading="lazy">
+      </div>
+      <span class="card-icon">📍</span>
+      <div class="card-title">
+        <span data-lang-inline="nl">Locatie</span>
+        <span data-lang-inline="en">Venue</span>
+        <span data-lang-inline="lt">Vieta</span>
+      </div>
+      <div class="card-body">
+        <strong>Giletos Sodyba</strong><br>
+        Žiedų g. 1, 53475 Mozūriškių kaimas, Kauno raj.<br><br>
+        <span data-lang-inline="nl">Een prachtig landgoed op 25–30 minuten van het centrum van Kaunas, in een groene en sfeervolle omgeving.</span>
+        <span data-lang-inline="en">A beautiful estate 25–30 minutes from central Kaunas, set in lush, atmospheric surroundings.</span>
+        <span data-lang-inline="lt">Puiki sodyba 25–30 min. nuo Kauno centro, žalioje ir jaukioje aplinkoje.</span>
+      </div>
+      <div class="map-wrapper map-embed">
+        <iframe src="https://maps.google.com/maps?q=Žiedų+g.+1,+Mozūriškių+kaimas,+Kauno+raj.&output=embed" loading="lazy" title="Giletos Sodyba"></iframe>
+        <a href="https://www.google.com/maps/search/?api=1&query=Giletos+Sodyba,+%C5%BDied%C5%B3+g.+1,+Moz%C5%ABri%C5%A1ki%C5%B3+kaimas,+Kauno+raj." target="_blank" class="map-open-btn">
+          <span data-lang-inline="nl">Open in Google Maps ↗</span>
+          <span data-lang-inline="en">Open in Google Maps ↗</span>
+          <span data-lang-inline="lt">Atidaryti Google Maps ↗</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-icon">👗</span>
+      <div class="card-title">
+        <span data-lang-inline="nl">Kledingvoorschrift</span>
+        <span data-lang-inline="en">Dress code</span>
+        <span data-lang-inline="lt">Aprangos kodas</span>
+      </div>
+      <div class="card-body">
+        <span data-lang-inline="nl"><strong>Nette kleding tot galakleding.</strong> Hoge hakken zijn natuurlijk mooi, maar denk ook aan comfortabele schoenen voor op de dansvloer.</span>
+        <span data-lang-inline="en"><strong>Smart to formal / black-tie.</strong> High heels look great, but don't forget comfortable shoes for the dance floor.</span>
+        <span data-lang-inline="lt"><strong>Šventiniai rūbai.</strong> Aukštakulniai gražu, bet nepamirškite ir patogių batų šokių aikštelėje.</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-icon">🎁</span>
+      <div class="card-title">
+        <span data-lang-inline="nl">Cadeau</span>
+        <span data-lang-inline="en">Gift</span>
+        <span data-lang-inline="lt">Dovana</span>
+      </div>
+      <div class="card-body">
+        <span data-lang-inline="nl">Jullie aanwezigheid is het mooiste cadeau. Een cadeau is dus zeker <strong>niet verplicht</strong> — details volgen binnenkort.</span>
+        <span data-lang-inline="en">Your presence is the greatest gift. A gift is therefore certainly <strong>not required</strong> — details to follow soon.</span>
+        <span data-lang-inline="lt">Jūsų dalyvavimas yra gražiausia dovana. <strong>Neprivaloma</strong>.</span>
+      </div>
+    </div>
+
+    <!-- Currency & apps — relevant only for travellers -->
+    <div class="card traveler-only">
+      <span class="card-icon">💶</span>
+      <div class="card-title">
+        <span data-lang-inline="nl">Valuta & Betalen</span>
+        <span data-lang-inline="en">Currency & Payment</span>
+        <span data-lang-inline="lt">Valiuta ir mokėjimas</span>
+      </div>
+      <div class="card-body">
+        <span data-lang-inline="nl">Litouwen gebruikt de <strong>Euro (€)</strong> — geen gedoe met wisselen. Contactloos betalen werkt overal uitstekend.</span>
+        <span data-lang-inline="en">Lithuania uses the <strong>Euro (€)</strong> — no currency exchange needed. Contactless payment works everywhere.</span>
+        <span data-lang-inline="lt">Lietuva naudoja <strong>eurą (€)</strong> — nereikia keisti valiutos. Bekontaktis mokėjimas veikia puikiai visur.</span>
+      </div>
+    </div>
+
+    <div class="card traveler-only">
+      <span class="card-icon">📱</span>
+      <div class="card-title">
+        <span data-lang-inline="nl">Handige apps</span>
+        <span data-lang-inline="en">Useful apps</span>
+        <span data-lang-inline="lt">Naudingos programėlės</span>
+      </div>
+      <div class="card-body">
+        <div class="apps-grid">
+          <a href="https://bolt.eu/en/cities/kaunas/" target="_blank" class="app-tile">
+            <span class="app-name">Bolt</span>
+            <span class="app-desc"><span data-lang-inline="nl">Taxi-app, werkt prima in Kaunas & Vilnius</span><span data-lang-inline="en">Taxi app, works perfectly in Kaunas & Vilnius</span><span data-lang-inline="lt">Taksi programėlė, puikiai veikia Kaune ir Vilniuje</span></span>
+            <span class="app-stores">
+              <span class="store-tag">App Store</span>
+              <span class="store-tag">Google Play</span>
+            </span>
+          </a>
+          <a href="https://www.google.com/maps" target="_blank" class="app-tile">
+            <span class="app-name">Google Maps</span>
+            <span class="app-desc"><span data-lang-inline="nl">Navigatie en OV-routes</span><span data-lang-inline="en">Navigation and public transport routes</span><span data-lang-inline="lt">Navigacija ir viešasis transportas</span></span>
+            <span class="app-stores">
+              <span class="store-tag">App Store</span>
+              <span class="store-tag">Google Play</span>
+            </span>
+          </a>
+          <a href="https://www.trafi.com/vilnius" target="_blank" class="app-tile">
+            <span class="app-name">Trafi</span>
+            <span class="app-desc"><span data-lang-inline="nl">Lokale bus- en tramtijden in Vilnius & Kaunas</span><span data-lang-inline="en">Local bus and tram times in Vilnius & Kaunas</span><span data-lang-inline="lt">Vietiniai autobusų ir tramvajų tvarkaraščiai Vilniuje ir Kaune</span></span>
+            <span class="app-stores">
+              <span class="store-tag">App Store</span>
+              <span class="store-tag">Google Play</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+
 </section>
 
 <!-- KAUNAS GUIDE -->
@@ -1231,6 +1982,10 @@
     <p class="section-label">Pažinkite Lietuvą</p>
     <h2 class="section-title">Ką veikti <em>Kaune</em></h2>
     <p class="section-intro">Kaunas yra paslėpta perla — su jaukiu senuoju miestu, įspūdinga architektūra ir gyvybinga mene. Tikrai verta praleisti dieną ar dvi!</p>
+  </div>
+
+  <div class="kaunas-hero">
+    <img src="wedding-photos/Kaunas.jpg" alt="Kaunas" loading="lazy">
   </div>
 
   <!-- WEATHER -->
@@ -1291,10 +2046,15 @@
         <span data-lang-inline="lt">Gatvės menas ir Kiemo galerija</span>
       </div>
       <p class="poi-desc">
-        <span data-lang-inline="nl">Kaunas staat bekend om indrukwekkende muurschilderingen. Download de street art map via kaunas.in voor een zelfgeleide tour.</span>
-        <span data-lang-inline="en">Kaunas is famous for its striking murals. Download the street art map at kaunas.in for a self-guided tour.</span>
-        <span data-lang-inline="lt">Kaunas garsėja įspūdingomis gatvės tapybomis. Atsisiųskite gatvės meno žemėlapį iš kaunas.in savarankiškai kelionei.</span>
+        <span data-lang-inline="nl">Kaunas staat bekend om indrukwekkende muurschilderingen. Volg de officiële kaart voor een zelfgeleide tour langs alle hoogtepunten.</span>
+        <span data-lang-inline="en">Kaunas is famous for its striking murals. Follow the official map for a self-guided tour past all the highlights.</span>
+        <span data-lang-inline="lt">Kaunas garsėja įspūdingomis sienų tapybomis. Sekite oficialiu žemėlapiu savarankiškai turai po visus įspūdingiausius kūrinius.</span>
       </p>
+      <a href="https://visit.kaunas.lt/en/see-and-do/street-art-map/" target="_blank" class="btn btn-outline" style="margin-top:0.85rem; padding: 0.45rem 1rem; font-size: 0.65rem;">
+        <span data-lang-inline="nl">Open street art map →</span>
+        <span data-lang-inline="en">Open street art map →</span>
+        <span data-lang-inline="lt">Atidaryti žemėlapį →</span>
+      </a>
     </div>
     <div class="poi">
       <span class="poi-emoji">😈</span>
@@ -1382,379 +2142,57 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════
-     SCHEDULE — visible to all guests
-     ═══════════════════════════════════════════════════════════ -->
-<section id="schedule" style="background: var(--cream-dark); max-width:100%; padding: 6rem 2rem;">
-  <div style="max-width:900px; margin:0 auto;">
-
-    <div data-lang="nl">
-      <p class="section-label">Programma</p>
-      <h2 class="section-title">Het <em>Programma</em></h2>
-      <p class="section-intro">Zo verloopt de trouwdag — van het verzamelpunt in het centrum van Kaunas tot de champagnetoren om middernacht.</p>
-    </div>
-
-    <div data-lang="en">
-      <p class="section-label">Schedule</p>
-      <h2 class="section-title">The <em>Schedule</em></h2>
-      <p class="section-intro">Here's how the wedding day will unfold — from the meeting point in central Kaunas all the way to the champagne tower at midnight.</p>
-    </div>
-
-    <div data-lang="lt">
-      <p class="section-label">Programa</p>
-      <h2 class="section-title">Dienos <em>programa</em></h2>
-      <p class="section-intro">Štai kaip vyks vestuvių diena — nuo susitikimo Kauno centre iki šampano bokšto vidurnaktį.</p>
-    </div>
-
-    <div class="timeline">
-
-      <div class="timeline-item">
-        <div class="timeline-time">15:00</div>
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <div class="timeline-title">
-            <span data-lang-inline="nl">Verzamelen in centrum Kaunas</span>
-            <span data-lang-inline="en">Gather at Kaunas city centre</span>
-            <span data-lang-inline="lt">Susirinkimas Kauno centre</span>
-          </div>
-          <div class="timeline-body">
-            <span data-lang-inline="nl">Gasten verzamelen op het centrale verzamelpunt om de bus naar de locatie te nemen. Exacte locatie volgt dichter bij de datum.</span>
-            <span data-lang-inline="en">Guests gather at the central meeting point to board the bus to the venue. Exact location will follow closer to the date.</span>
-            <span data-lang-inline="lt">Svečiai renkasi centrinėje susitikimo vietoje, kad sėstų į autobusą iki vietos. Tiksli vieta bus paskelbta arčiau datos.</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-time">15:15</div>
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <div class="timeline-title">
-            <span data-lang-inline="nl">Bus vertrekt naar de locatie</span>
-            <span data-lang-inline="en">Bus departs for the venue</span>
-            <span data-lang-inline="lt">Autobusas išvyksta į vietą</span>
-          </div>
-          <div class="timeline-body">
-            <span data-lang-inline="nl">De bus rijdt af richting Giletos Sodyba (ca. 25–30 min).</span>
-            <span data-lang-inline="en">The bus leaves for Giletos Sodyba (about 25–30 min).</span>
-            <span data-lang-inline="lt">Autobusas išvyksta į Giletos Sodybą (apie 25–30 min.).</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-time">16:00</div>
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <div class="timeline-title">
-            <span data-lang-inline="nl">Bruidspaar arriveert</span>
-            <span data-lang-inline="en">Bride & groom arrive</span>
-            <span data-lang-inline="lt">Atvyksta jaunieji</span>
-          </div>
-          <div class="timeline-body">
-            <span data-lang-inline="nl">Dylan & Milana komen aan op de locatie.</span>
-            <span data-lang-inline="en">Dylan & Milana arrive at the venue.</span>
-            <span data-lang-inline="lt">Dylan ir Milana atvyksta į vietą.</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="timeline-item highlight">
-        <div class="timeline-time">17:00</div>
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <div class="timeline-title">
-            <span data-lang-inline="nl">Trouwceremonie</span>
-            <span data-lang-inline="en">Wedding ceremony</span>
-            <span data-lang-inline="lt">Vestuvių ceremonija</span>
-          </div>
-          <div class="timeline-body">
-            <span data-lang-inline="nl">De officiële huwelijksceremonie.</span>
-            <span data-lang-inline="en">The official wedding ceremony.</span>
-            <span data-lang-inline="lt">Oficiali vestuvių ceremonija.</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-time">17:30</div>
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <div class="timeline-title">
-            <span data-lang-inline="nl">Felicitaties</span>
-            <span data-lang-inline="en">Congratulations</span>
-            <span data-lang-inline="lt">Sveikinimai</span>
-          </div>
-          <div class="timeline-body">
-            <span data-lang-inline="nl">Gasten feliciteren het bruidspaar — een korte ronde langs alle gasten.</span>
-            <span data-lang-inline="en">Guests congratulate the couple — a short receiving line.</span>
-            <span data-lang-inline="lt">Svečiai sveikina jaunuosius — trumpa svečių rotacija.</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="timeline-item highlight">
-        <div class="timeline-time">19:00</div>
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <div class="timeline-title">
-            <span data-lang-inline="nl">Diner</span>
-            <span data-lang-inline="en">Dinner</span>
-            <span data-lang-inline="lt">Vakarienė</span>
-          </div>
-          <div class="timeline-body">
-            <span data-lang-inline="nl">Het diner wordt geserveerd.</span>
-            <span data-lang-inline="en">Dinner is served.</span>
-            <span data-lang-inline="lt">Patiekiama vakarienė.</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-time">19:30</div>
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <div class="timeline-title">
-            <span data-lang-inline="nl">Familievuur</span>
-            <span data-lang-inline="en">Family fire</span>
-            <span data-lang-inline="lt">Šeimos ugnis</span>
-          </div>
-          <div class="timeline-body">
-            <span data-lang-inline="nl">Dankwoord aan grootouders, getuigen en gasten.</span>
-            <span data-lang-inline="en">Thank-you words to grandparents, witnesses, and guests.</span>
-            <span data-lang-inline="lt">Padėkos žodis seneliams, liudininkams ir svečiams.</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-time">20:00</div>
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <div class="timeline-title">
-            <span data-lang-inline="nl">Taart aansnijden</span>
-            <span data-lang-inline="en">Cake cutting</span>
-            <span data-lang-inline="lt">Torto pjaustymas</span>
-          </div>
-          <div class="timeline-body">
-            <span data-lang-inline="nl">De bruidstaart wordt aangesneden.</span>
-            <span data-lang-inline="en">The wedding cake is cut.</span>
-            <span data-lang-inline="lt">Pjaunamas vestuvinis tortas.</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="timeline-item highlight">
-        <div class="timeline-time">22:30</div>
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <div class="timeline-title">
-            <span data-lang-inline="nl">Eerste dans</span>
-            <span data-lang-inline="en">First dance</span>
-            <span data-lang-inline="lt">Pirmasis šokis</span>
-          </div>
-          <div class="timeline-body">
-            <span data-lang-inline="nl">Gevolgd door een flashmob — doe mee!</span>
-            <span data-lang-inline="en">Followed by a flashmob — join in!</span>
-            <span data-lang-inline="lt">Po jo — flashmobas. Prisijunkite!</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-time">23:00</div>
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <div class="timeline-title">
-            <span data-lang-inline="nl">Boeket gooien</span>
-            <span data-lang-inline="en">Bouquet throwing</span>
-            <span data-lang-inline="lt">Puokštės metimas</span>
-          </div>
-          <div class="timeline-body">
-            <span data-lang-inline="nl">Wie wordt de volgende?</span>
-            <span data-lang-inline="en">Who's next in line?</span>
-            <span data-lang-inline="lt">Kas bus kitas?</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="timeline-item highlight">
-        <div class="timeline-time">00:00</div>
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <div class="timeline-title">
-            <span data-lang-inline="nl">Champagnetoren</span>
-            <span data-lang-inline="en">Champagne tower</span>
-            <span data-lang-inline="lt">Šampano bokštas</span>
-          </div>
-          <div class="timeline-body">
-            <span data-lang-inline="nl">Het feest gaat door — proost op de bruid en bruidegom!</span>
-            <span data-lang-inline="en">The celebration continues — a toast to the bride and groom!</span>
-            <span data-lang-inline="lt">Šventė tęsiasi — į jaunųjų sveikatą!</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="schedule-note">
-      <p>
-        <span data-lang-inline="nl">⏰ <strong>Belangrijk:</strong> Wees vóór 15:00 op het verzamelpunt — de bus vertrekt stipt om 15:15 naar Giletos Sodyba. Tijden zijn indicatief en kunnen licht afwijken op de dag zelf.</span>
-        <span data-lang-inline="en">⏰ <strong>Important:</strong> Please be at the meeting point before 15:00 — the bus leaves promptly at 15:15 for Giletos Sodyba. Times are indicative and may shift slightly on the day.</span>
-        <span data-lang-inline="lt">⏰ <strong>Svarbu:</strong> Susitikimo vietoje būkite iki 15:00 — autobusas išvyksta lygiai 15:15 į Giletos Sodybą. Laikai orientaciniai ir dieną gali šiek tiek keistis.</span>
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════
-     WEDDING INFO — visible to all guests
-     ═══════════════════════════════════════════════════════════ -->
-<section id="wedding">
-
-    <div data-lang="nl">
-      <p class="section-label">Praktische informatie</p>
-      <h2 class="section-title">De <em>Bruiloft</em></h2>
-      <p class="section-intro">Alles wat je moet weten voor een onvergetelijke dag.</p>
-    </div>
-
-    <div data-lang="en">
-      <p class="section-label">Practical information</p>
-      <h2 class="section-title">The <em>Wedding</em></h2>
-      <p class="section-intro">Everything you need to know for an unforgettable day.</p>
-    </div>
-
-    <div data-lang="lt">
-      <p class="section-label">Praktinė informacija</p>
-      <h2 class="section-title"><em>Vestuvės</em></h2>
-      <p class="section-intro">Viskas, ką reikia žinoti neužmirštamai dienai.</p>
-    </div>
-
-    <div class="card">
-      <span class="card-icon">📍</span>
-      <div class="card-title">
-        <span data-lang-inline="nl">Locatie</span>
-        <span data-lang-inline="en">Venue</span>
-        <span data-lang-inline="lt">Vieta</span>
-      </div>
-      <div class="card-body">
-        <strong>Giletos Sodyba</strong><br>
-        Žiedų g. 1, 53475 Mozūriškių kaimas, Kauno raj.<br><br>
-        <span data-lang-inline="nl">Een prachtig luxe landgoed op 25–30 min van het centrum van Kaunas, in een groene sfeervolle omgeving.</span>
-        <span data-lang-inline="en">A beautiful luxury estate 25–30 min from central Kaunas, set in lush, atmospheric surroundings.</span>
-        <span data-lang-inline="lt">Puikus prabangus dvaras 25–30 min. nuo Kauno centro, žalioje ir jaukioje aplinkoje.</span>
-      </div>
-    </div>
-
-    <div class="card">
-      <span class="card-icon">👗</span>
-      <div class="card-title">
-        <span data-lang-inline="nl">Kledingvoorschrift</span>
-        <span data-lang-inline="en">Dress code</span>
-        <span data-lang-inline="lt">Aprangos kodas</span>
-      </div>
-      <div class="card-body">
-        <span data-lang-inline="nl"><strong>Formeel / Gala.</strong> Dames: jurk of rok (lang of midi). Heren: pak of smoking. Let op: de bruiloft vindt deels buiten plaats — hoge hakken op gras zijn minder praktisch.</span>
-        <span data-lang-inline="en"><strong>Formal / Black-tie.</strong> Ladies: dress or skirt (long or midi). Gentlemen: suit or tuxedo. Note: part of the wedding is outdoors — high heels on grass aren't ideal.</span>
-        <span data-lang-inline="lt"><strong>Oficialus / Gala.</strong> Moterims: suknelė arba sijonas (ilgas arba midi). Vyrams: kostiumas arba smokingas. Pastaba: dalis vestuvių vyks lauke — aukštakulniai ant žolės gali būti nepatogūs.</span>
-      </div>
-    </div>
-
-    <div class="card">
-      <span class="card-icon">🎁</span>
-      <div class="card-title">
-        <span data-lang-inline="nl">Cadeau</span>
-        <span data-lang-inline="en">Gift</span>
-        <span data-lang-inline="lt">Dovana</span>
-      </div>
-      <div class="card-body">
-        <span data-lang-inline="nl">Jullie aanwezigheid is het mooiste cadeau. Voor wie iets wil meegeven: een <strong>geldbijdrage</strong> wordt zeer op prijs gesteld — we dromen van een mooie huwelijksreis. Details volgen binnenkort.</span>
-        <span data-lang-inline="en">Your presence is the greatest gift. For those who'd like to give something: a <strong>monetary contribution</strong> is greatly appreciated — we're dreaming of a memorable honeymoon. Details to follow soon.</span>
-        <span data-lang-inline="lt">Jūsų dalyvavimas yra gražiausia dovana. Tiems, kurie nori ką nors padovanoti: <strong>piniginė dovana</strong> bus labai vertinama — mes svajojame apie medaus mėnesį. Detalės netrukus.</span>
-      </div>
-    </div>
-
-    <!-- Currency & apps — relevant only for travellers -->
-    <div class="card traveler-only">
-      <span class="card-icon">💶</span>
-      <div class="card-title">
-        <span data-lang-inline="nl">Valuta & Betalen</span>
-        <span data-lang-inline="en">Currency & Payment</span>
-        <span data-lang-inline="lt">Valiuta ir mokėjimas</span>
-      </div>
-      <div class="card-body">
-        <span data-lang-inline="nl">Litouwen gebruikt de <strong>Euro (€)</strong> — geen gedoe met wisselen. Contactloos betalen werkt overal uitstekend.</span>
-        <span data-lang-inline="en">Lithuania uses the <strong>Euro (€)</strong> — no currency exchange needed. Contactless payment works everywhere.</span>
-        <span data-lang-inline="lt">Lietuva naudoja <strong>eurą (€)</strong> — nereikia keisti valiutos. Bekontaktis mokėjimas veikia puikiai visur.</span>
-      </div>
-    </div>
-
-    <div class="card traveler-only">
-      <span class="card-icon">📱</span>
-      <div class="card-title">
-        <span data-lang-inline="nl">Handige apps</span>
-        <span data-lang-inline="en">Useful apps</span>
-        <span data-lang-inline="lt">Naudingos programėlės</span>
-      </div>
-      <div class="card-body">
-        <strong>Bolt</strong> — <span data-lang-inline="nl">taxi-app, werkt prima in Kaunas & Vilnius</span><span data-lang-inline="en">taxi app, works perfectly in Kaunas & Vilnius</span><span data-lang-inline="lt">taksi programėlė, puikiai veikia Kaune ir Vilniuje</span><br>
-        <strong>Google Maps</strong> — <span data-lang-inline="nl">navigatie en OV-routes</span><span data-lang-inline="en">navigation and public transport routes</span><span data-lang-inline="lt">navigacija ir viešasis transportas</span><br>
-        <strong>Trafi</strong> — <span data-lang-inline="nl">lokale bus- en tramtijden in Kaunas</span><span data-lang-inline="en">local bus and tram timetables in Kaunas</span><span data-lang-inline="lt">vietiniai autobusų ir tramvajų tvarkaraščiai Kaune</span>
-      </div>
-    </div>
-
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════
      PHOTOS — visible to all
      ═══════════════════════════════════════════════════════════ -->
 <div class="gallery-section" id="photos">
   <div class="gallery-inner">
 
     <div data-lang="nl">
-      <p class="section-label">Herinneringen</p>
-      <h2 class="section-title">Foto<em>'s</em></h2>
-      <p class="section-intro">Na de grote dag vullen we deze sectie met trouwfoto's en mooie herinneringen. Houd deze pagina in de gaten!</p>
+      <p class="section-label">Een eerste blik</p>
+      <h2 class="section-title">De <em>locatie</em> & <em>Kaunas</em></h2>
+      <p class="section-intro">Een voorproefje van de plek waar we trouwen en de stad er omheen.</p>
     </div>
 
     <div data-lang="en">
-      <p class="section-label">Memories</p>
-      <h2 class="section-title">Pho<em>tos</em></h2>
-      <p class="section-intro">After the big day we'll fill this section with wedding photos and beautiful memories. Keep an eye on this page!</p>
+      <p class="section-label">A first look</p>
+      <h2 class="section-title">The <em>venue</em> & <em>Kaunas</em></h2>
+      <p class="section-intro">A glimpse of where we'll be married, and the city around it.</p>
     </div>
 
     <div data-lang="lt">
-      <p class="section-label">Prisiminimai</p>
-      <h2 class="section-title">Nuotrau<em>kos</em></h2>
-      <p class="section-intro">Po didžiosios dienos šią dalį užpildysime vestuvių nuotraukomis ir gražiais prisiminimais. Stebėkite šį puslapį!</p>
+      <p class="section-label">Pirmasis žvilgsnis</p>
+      <h2 class="section-title"><em>Vieta</em> ir <em>Kaunas</em></h2>
+      <p class="section-intro">Trumpa apžvalga vietos, kurioje tuokiamės, ir miesto aplink.</p>
     </div>
 
     <div class="gallery-grid">
       <div class="gallery-item">
-        <span class="gallery-placeholder-icon">📷</span>
-        <span class="gallery-placeholder-text"><span data-lang-inline="nl">Trouwfoto's</span><span data-lang-inline="en">Wedding photos</span><span data-lang-inline="lt">Vestuvių nuotraukos</span></span>
-        <span class="gallery-coming-soon"><span data-lang-inline="nl">22 aug 2026</span><span data-lang-inline="en">22 Aug 2026</span><span data-lang-inline="lt">2026 rugpj. 22</span></span>
+        <img src="wedding-photos/Giletos-sodyba.jpg" alt="Giletos Sodyba" loading="lazy">
+        <div class="gallery-caption"><span data-lang-inline="nl">Giletos Sodyba</span><span data-lang-inline="en">Giletos Sodyba</span><span data-lang-inline="lt">Giletos Sodyba</span></div>
       </div>
       <div class="gallery-item">
-        <span class="gallery-placeholder-icon">💐</span>
-        <span class="gallery-placeholder-text"><span data-lang-inline="nl">Decoratie</span><span data-lang-inline="en">Decoration</span><span data-lang-inline="lt">Dekoracija</span></span>
-        <span class="gallery-coming-soon"><span data-lang-inline="nl">Binnenkort</span><span data-lang-inline="en">Coming soon</span><span data-lang-inline="lt">Netrukus</span></span>
+        <img src="wedding-photos/ceremony location.jpg" alt="Ceremony location" loading="lazy">
+        <div class="gallery-caption"><span data-lang-inline="nl">Ceremoniepunt</span><span data-lang-inline="en">Ceremony spot</span><span data-lang-inline="lt">Ceremonijos vieta</span></div>
       </div>
       <div class="gallery-item">
-        <span class="gallery-placeholder-icon">🥂</span>
-        <span class="gallery-placeholder-text"><span data-lang-inline="nl">Feestmoment</span><span data-lang-inline="en">Celebration</span><span data-lang-inline="lt">Šventės akimirkos</span></span>
-        <span class="gallery-coming-soon"><span data-lang-inline="nl">Binnenkort</span><span data-lang-inline="en">Coming soon</span><span data-lang-inline="lt">Netrukus</span></span>
+        <img src="wedding-photos/Kaunas castle.jpg" alt="Kaunas Castle" loading="lazy">
+        <div class="gallery-caption"><span data-lang-inline="nl">Kaunas Kasteel</span><span data-lang-inline="en">Kaunas Castle</span><span data-lang-inline="lt">Kauno pilis</span></div>
       </div>
       <div class="gallery-item">
-        <span class="gallery-placeholder-icon">🏡</span>
-        <span class="gallery-placeholder-text"><span data-lang-inline="nl">De locatie</span><span data-lang-inline="en">The venue</span><span data-lang-inline="lt">Vieta</span></span>
-        <span class="gallery-coming-soon"><span data-lang-inline="nl">Binnenkort</span><span data-lang-inline="en">Coming soon</span><span data-lang-inline="lt">Netrukus</span></span>
+        <img src="wedding-photos/kaunas-square.jpg" alt="Kaunas square" loading="lazy">
+        <div class="gallery-caption"><span data-lang-inline="nl">Stadsplein</span><span data-lang-inline="en">Town square</span><span data-lang-inline="lt">Rotušės aikštė</span></div>
       </div>
       <div class="gallery-item">
-        <span class="gallery-placeholder-icon">🌇</span>
-        <span class="gallery-placeholder-text"><span data-lang-inline="nl">Kaunas</span><span data-lang-inline="en">Kaunas</span><span data-lang-inline="lt">Kaunas</span></span>
-        <span class="gallery-coming-soon"><span data-lang-inline="nl">Binnenkort</span><span data-lang-inline="en">Coming soon</span><span data-lang-inline="lt">Netrukus</span></span>
+        <img src="wedding-photos/kaunas-city-centre-new.jpg" alt="Kaunas city centre" loading="lazy">
+        <div class="gallery-caption"><span data-lang-inline="nl">Centrum Kaunas</span><span data-lang-inline="en">Kaunas city centre</span><span data-lang-inline="lt">Kauno centras</span></div>
       </div>
     </div>
+
+    <p class="photo-coming-note">
+      <span data-lang-inline="nl">📷 <span>Trouwfoto's volgen na</span> 22 augustus 2026</span>
+      <span data-lang-inline="en">📷 <span>Wedding photos to follow after</span> 22 August 2026</span>
+      <span data-lang-inline="lt">📷 <span>Vestuvių nuotraukos po</span> 2026 m. rugpjūčio 22 d.</span>
+    </p>
   </div>
 </div>
 
@@ -1811,8 +2249,8 @@
       <span data-lang-inline="en">Is English spoken in Kaunas?</span>
     </div>
     <div class="faq-a">
-      <span data-lang-inline="nl">Ja, zeker in het centrum, bij hotels en restaurants wordt goed Engels gesproken. Een simpel "Ačiū" (dank je wel) in het Litouws wordt altijd gewaardeerd!</span>
-      <span data-lang-inline="en">Yes — especially in the city centre, at hotels and restaurants. A simple "Ačiū" (thank you) in Lithuanian is always appreciated!</span>
+      <span data-lang-inline="nl">Ja. In het centrum en bij hotels en restaurants wordt over het algemeen goed Engels gesproken. Een simpel <em>"Ačiu"</em> (uitgesproken als <em>"a-tsjoe"</em>, "dank je wel") in het Litouws wordt altijd gewaardeerd!</span>
+      <span data-lang-inline="en">Yes. English is widely spoken in the city centre and at hotels and restaurants. A simple <em>"Ačiu"</em> (pronounced <em>"a-choo"</em>, meaning "thank you") in Lithuanian is always appreciated!</span>
     </div>
   </div>
 
@@ -1835,9 +2273,9 @@
       <span data-lang-inline="lt">Ar yra nakvynės galimybė prie vietos?</span>
     </div>
     <div class="faq-a">
-      <span data-lang-inline="nl">Giletos Sodyba beschikt over kamers op de tweede verdieping, inclusief een bruidssuite. Vraag tijdig aan, want er is beperkte beschikbaarheid.</span>
-      <span data-lang-inline="en">Giletos Sodyba has rooms on the second floor, including a bridal suite. Reserve early — availability is limited.</span>
-      <span data-lang-inline="lt">Giletos Sodyba turi kambarius antrame aukšte, įskaitant jaunavedžių apartamentus. Rezervuokite laiku, nes vietų skaičius ribotas.</span>
+      <span data-lang-inline="nl">Ja — overnachten op Giletos Sodyba is <strong>gratis</strong> voor onze gasten. Let op: de kamers zijn ingericht voor <strong>5 tot 7 personen</strong>, dus houd er rekening mee dat je een kamer deelt met andere gasten. Laat het ons bij je RSVP weten als je wilt blijven slapen.</span>
+      <span data-lang-inline="en">Yes — staying overnight at Giletos Sodyba is <strong>free</strong> for our guests. Note: each room sleeps <strong>5 to 7 people</strong>, so expect to share with other guests. Please let us know in your RSVP if you'd like to stay overnight.</span>
+      <span data-lang-inline="lt">Taip — nakvynė Giletos Sodyboje mūsų svečiams yra <strong>nemokama</strong>. Atkreipkite dėmesį: kambariai skirti <strong>5–7 žmonėms</strong>, tad būsite vienoje patalpoje su kitais svečiais. Patvirtinkite norimą nakvynę kartu su dalyvavimu.</span>
     </div>
   </div>
 
@@ -1848,9 +2286,9 @@
       <span data-lang-inline="lt">Ar turiu patvirtinti dalyvavimą?</span>
     </div>
     <div class="faq-a">
-      <span data-lang-inline="nl">Ja, graag zo snel mogelijk! Neem contact op met Dylan of Milana om je aanwezigheid te bevestigen.</span>
-      <span data-lang-inline="en">Yes, as soon as possible please! Get in touch with Dylan or Milana to confirm your attendance.</span>
-      <span data-lang-inline="lt">Taip, kuo greičiau! Susisiekite su Dylanu arba Milana, kad patvirtintumėte savo dalyvavimą.</span>
+      <span data-lang-inline="nl">Ja, graag zo snel mogelijk! Neem contact op met Dylan of Milana om je <strong>aanwezigheid</strong> te bevestigen en je eventuele <strong>overnachting</strong> op de bruiloftsdag door te geven.</span>
+      <span data-lang-inline="en">Yes, as soon as possible please! Reach out to Dylan or Milana to confirm your <strong>attendance</strong> and to let us know whether you'd like to <strong>stay overnight</strong> at the venue.</span>
+      <span data-lang-inline="lt">Taip, kuo greičiau! Susisiekite su Dylanu arba Milana, kad patvirtintumėte savo <strong>dalyvavimą</strong> ir <strong>nakvynės poreikį</strong>.</span>
     </div>
   </div>
 
@@ -1921,6 +2359,26 @@
   updateCountdown();
   setInterval(updateCountdown, 1000);
 
+  // ── MOBILE MENU ──
+  (function initMobileMenu() {
+    const btn = document.getElementById('mobileMenuBtn');
+    const links = document.querySelector('.nav-links');
+    if (!btn || !links) return;
+
+    function toggle(open) {
+      const willOpen = open !== undefined ? open : !links.classList.contains('open');
+      links.classList.toggle('open', willOpen);
+      btn.classList.toggle('open', willOpen);
+      btn.setAttribute('aria-expanded', String(willOpen));
+    }
+
+    btn.addEventListener('click', () => toggle());
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggle(false)));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') toggle(false);
+    });
+  })();
+
   // ── FAQ ACCORDION ──
   document.querySelectorAll('.faq-q').forEach(q => {
     q.addEventListener('click', () => {
@@ -1941,7 +2399,7 @@
     });
   }, { threshold: 0.08 });
 
-  document.querySelectorAll('.card, .step, .poi, .airline-card, .transport-card, .gallery-item, .timeline-item').forEach(el => {
+  document.querySelectorAll('.card, .step, .poi, .airline-card, .transport-card, .gallery-item, .timeline-item, .stay-card').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(16px)';
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
