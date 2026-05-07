@@ -1375,9 +1375,10 @@
     .map-open-btn { bottom: 0.5rem; right: 0.5rem; padding: 0.4rem 0.7rem; font-size: 0.6rem; }
     .gallery-grid {
       grid-template-columns: 1fr 1fr;
-      grid-template-rows: 180px 180px 180px;
+      grid-template-rows: auto auto auto;
     }
-    .gallery-item:first-child { grid-row: span 1; grid-column: span 2; height: 240px; }
+    .gallery-item { aspect-ratio: 4 / 3; height: auto; }
+    .gallery-item:first-child { grid-row: span 1; grid-column: span 2; aspect-ratio: 3 / 2; height: auto; }
     .transport-card { grid-template-columns: 48px 1fr; padding: 1.4rem 1.25rem; }
     .transport-actions { grid-column: 1 / -1; flex-direction: row; flex-wrap: wrap; align-items: flex-start; }
     .transport-meta { gap: 1rem; }
@@ -1402,8 +1403,9 @@
   @media (max-width: 420px) {
     .hero-sub { font-size: 0.7rem; letter-spacing: 0.2em; }
     .countdown-num { font-size: 2rem; }
-    .gallery-grid { grid-template-columns: 1fr; grid-template-rows: 200px 200px 200px 200px 200px; }
-    .gallery-item:first-child { grid-column: span 1; height: 240px; }
+    .gallery-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+    .gallery-item { aspect-ratio: 4 / 3; height: auto; }
+    .gallery-item:first-child { grid-column: span 1; aspect-ratio: 4 / 3; height: auto; }
   }
 </style>
 </head>
