@@ -619,7 +619,7 @@
     if (!name) return showAlert(t('nameRequired'), 'error');
     if (selectedFiles.length === 0) return showAlert(t('noFiles'), 'error');
 
-    if (APPS_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbwtBvwiqF-fsmc1E3WVNuLmM2XeqNrFwgW_mmpnO-zOYC2fi5FYl2vHiTsT05-VXD7g/exec') {
+    if (APPS_SCRIPT_URL.indexOf('PASTE_') === 0) {
       return showAlert(t('notConfigured'), 'error');
     }
 
