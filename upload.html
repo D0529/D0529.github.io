@@ -432,7 +432,7 @@
   // ==== CONFIG ====
   // Replace with your deployed Google Apps Script Web App URL after running
   // the setup in scripts/upload-portal.gs
-  const APPS_SCRIPT_URL = 'PASTE_YOUR_APPS_SCRIPT_URL_HERE';
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwtBvwiqF-fsmc1E3WVNuLmM2XeqNrFwgW_mmpnO-zOYC2fi5FYl2vHiTsT05-VXD7g/exec';
   const MAX_FILE_SIZE = 30 * 1024 * 1024; // 30 MB per file (Apps Script payload limit)
   const MAX_FILES = 50;
 
@@ -619,7 +619,7 @@
     if (!name) return showAlert(t('nameRequired'), 'error');
     if (selectedFiles.length === 0) return showAlert(t('noFiles'), 'error');
 
-    if (APPS_SCRIPT_URL === 'PASTE_YOUR_APPS_SCRIPT_URL_HERE') {
+    if (APPS_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbwtBvwiqF-fsmc1E3WVNuLmM2XeqNrFwgW_mmpnO-zOYC2fi5FYl2vHiTsT05-VXD7g/exec') {
       return showAlert(t('notConfigured'), 'error');
     }
 
