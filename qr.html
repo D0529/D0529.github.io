@@ -1,0 +1,210 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scan om je foto's te delen — Dylan & Milana</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #faf7f2;
+    --gold: #b08d57;
+    --gold-pale: #d9c9a3;
+    --dark: #2a2218;
+    --text: #4a3f30;
+    --text-light: #8a7f6f;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: var(--cream);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+  }
+
+  .card {
+    max-width: 520px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    color: var(--dark);
+    letter-spacing: 0.02em;
+    margin-bottom: 0.25rem;
+  }
+  .brand em { font-style: italic; color: var(--gold); }
+
+  .date {
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2rem;
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem;
+    font-weight: 400;
+    color: var(--dark);
+    line-height: 1.15;
+    margin-bottom: 0.5rem;
+  }
+  h1 em { font-style: italic; color: var(--gold); }
+
+  .subtitle {
+    color: var(--text-light);
+    margin-bottom: 2rem;
+    font-size: 1rem;
+  }
+
+  .qr-frame {
+    background: white;
+    padding: 1.5rem;
+    border: 1px solid var(--gold-pale);
+    border-radius: 6px;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 20px rgba(42,34,24,0.08);
+  }
+  .qr-frame img {
+    display: block;
+    width: min(360px, 80vw);
+    height: auto;
+  }
+
+  .url-hint {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-bottom: 0.35rem;
+    letter-spacing: 0.05em;
+  }
+  .url {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--dark);
+  }
+  .url a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--gold); }
+
+  .print-btn {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 0.75rem 1.5rem;
+    font: inherit;
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: none;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .print-btn:hover { background: var(--gold); color: white; }
+
+  [data-lang] { display: none; }
+  [data-lang-inline] { display: none; }
+  .lang-nl [data-lang="nl"], .lang-en [data-lang="en"], .lang-lt [data-lang="lt"] { display: block; }
+  .lang-nl [data-lang-inline="nl"], .lang-en [data-lang-inline="en"], .lang-lt [data-lang-inline="lt"] { display: inline; }
+
+  .lang-bar {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    gap: 0.35rem;
+  }
+  .lang-btn {
+    background: white;
+    border: 1px solid var(--gold-pale);
+    color: var(--text-light);
+    font: inherit;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    padding: 0.35rem 0.7rem;
+    cursor: pointer;
+    border-radius: 2px;
+  }
+  .lang-btn.active { background: var(--gold); color: white; border-color: var(--gold); }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .lang-bar, .print-btn { display: none !important; }
+    .qr-frame { box-shadow: none; border-color: #ccc; }
+  }
+</style>
+</head>
+<body class="lang-nl">
+
+<div class="lang-bar">
+  <button type="button" class="lang-btn active" data-lang-btn="nl">🇳🇱</button>
+  <button type="button" class="lang-btn" data-lang-btn="en">🇬🇧</button>
+  <button type="button" class="lang-btn" data-lang-btn="lt">🇱🇹</button>
+</div>
+
+<div class="card">
+  <p class="brand">Dylan <em>&</em> Milana</p>
+  <p class="date">22 · 08 · 2026</p>
+
+  <h1>
+    <span data-lang-inline="nl">Deel je <em>foto's</em></span>
+    <span data-lang-inline="en">Share your <em>photos</em></span>
+    <span data-lang-inline="lt">Pasidalinkite <em>nuotraukomis</em></span>
+  </h1>
+
+  <p class="subtitle">
+    <span data-lang-inline="nl">Scan de code met je telefoon om foto's en video's te uploaden.</span>
+    <span data-lang-inline="en">Scan the code with your phone to upload photos and videos.</span>
+    <span data-lang-inline="lt">Nuskaitykite kodą telefonu, kad įkeltumėte nuotraukas ir vaizdo įrašus.</span>
+  </p>
+
+  <div class="qr-frame">
+    <img src="assets/upload-qr.svg" alt="QR code — d0529.github.io/upload.html">
+  </div>
+
+  <p class="url-hint">
+    <span data-lang-inline="nl">Werkt de code niet? Ga naar</span>
+    <span data-lang-inline="en">Code not working? Go to</span>
+    <span data-lang-inline="lt">Kodas neveikia? Eikite į</span>
+  </p>
+  <p class="url"><a href="/upload.html">d0529.github.io/upload.html</a></p>
+
+  <button type="button" class="print-btn" onclick="window.print()">
+    <span data-lang-inline="nl">Afdrukken</span>
+    <span data-lang-inline="en">Print</span>
+    <span data-lang-inline="lt">Spausdinti</span>
+  </button>
+</div>
+
+<script>
+  function setLang(lang) {
+    document.body.className = 'lang-' + lang;
+    document.querySelectorAll('.lang-btn').forEach(b => {
+      b.classList.toggle('active', b.dataset.langBtn === lang);
+    });
+    try { localStorage.setItem('dm-lang', lang); } catch (e) {}
+  }
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    b.addEventListener('click', () => setLang(b.dataset.langBtn));
+  });
+  try {
+    const saved = localStorage.getItem('dm-lang');
+    if (saved && ['nl','en','lt'].includes(saved)) setLang(saved);
+  } catch (e) {}
+</script>
+</body>
+</html>

@@ -458,18 +458,6 @@
     return (document.body.className.match(/lang-(\w+)/) || [,'nl'])[1];
   }
 
-  // ==== DEVICE DETECTION ====
-  function detectDevice() {
-    const ua = navigator.userAgent || '';
-    if (/iPad/.test(ua) || (/Macintosh/.test(ua) && 'ontouchend' in document)) return 'iPad';
-    if (/iPhone/.test(ua)) return 'iPhone';
-    if (/Android/.test(ua)) return /Mobile/.test(ua) ? 'Android-phone' : 'Android-tablet';
-    if (/Windows/.test(ua)) return 'Windows';
-    if (/Macintosh/.test(ua)) return 'Mac';
-    if (/Linux/.test(ua)) return 'Linux';
-    return 'Other';
-  }
-
   // ==== TRANSLATIONS ====
   const T = {
     nl: {
@@ -626,7 +614,6 @@
     setInputsDisabled(true);
     progressBox.hidden = false;
 
-    const device = detectDevice();
     let successCount = 0;
     const failed = [];
 
@@ -639,7 +626,7 @@
       progressFill.style.width = ((i / selectedFiles.length) * 100) + '%';
 
       try {
-        await uploadFile(file, name, device);
+        await uploadFile(file, name);
         successCount++;
         if (preview) {
           preview.classList.remove('uploading');
@@ -679,7 +666,7 @@
     uploadBtn.disabled = disabled;
   }
 
-  function uploadFile(file, name, device) {
+  function uploadFile(file, name) {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
       reader.onload = async () => {
@@ -687,7 +674,6 @@
           const base64 = String(reader.result).split(',')[1];
           const payload = {
             guestName: name,
-            device: device,
             fileName: file.name,
             mimeType: file.type || 'application/octet-stream',
             dataBase64: base64,
