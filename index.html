@@ -1329,6 +1329,10 @@
      Hidden for the Lithuanian audience (who live there). */
   body.lang-lt .traveler-only { display: none !important; }
 
+  /* Sections we don't want to show to Lithuanian-speaking guests
+     (e.g. cultural conventions already familiar to them). */
+  body.lang-lt .hide-lt { display: none !important; }
+
   /* ── RESPONSIVE ── */
   @media (max-width: 820px) {
     nav { padding: 0 1rem; }
@@ -1430,7 +1434,6 @@
     <li class="traveler-only"><a href="#kaunas">Kaunas</a></li>
     <li><a href="#photos"><span data-lang-inline="nl">Foto's</span><span data-lang-inline="en">Photos</span><span data-lang-inline="lt">Nuotraukos</span></a></li>
     <li><a href="#upload"><span data-lang-inline="nl">Upload</span><span data-lang-inline="en">Upload</span><span data-lang-inline="lt">Įkelti</span></a></li>
-    <li><a href="#rsvp">RSVP</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
   <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu" aria-expanded="false">
@@ -1899,9 +1902,9 @@
 
   <div class="highlight-box" style="margin-top:2rem;">
     <p>
-      <span data-lang-inline="nl">🛏️ <strong>Bruiloftsnacht (za 22 aug):</strong> overnachten op Giletos Sodyba is gratis voor onze gasten. Geef in je RSVP aan of je wilt blijven slapen — kamers zijn voor 5–7 personen, en we proberen ze in te delen op basis van wie elkaar kent.</span>
-      <span data-lang-inline="en">🛏️ <strong>Wedding night (Sat 22 Aug):</strong> staying at Giletos Sodyba is free for our guests. Let us know in your RSVP if you'd like a bed — rooms sleep 5–7, and we'll try to assign them based on who knows each other.</span>
-      <span data-lang-inline="lt">🛏️ <strong>Vestuvių naktis (šešt. 22 rugpj.):</strong> nakvynė Giletos Sodyboje mūsų svečiams nemokama. Pažymėkite RSVP, jei norite likti — kambariai skirti 5–7 žmonėms; juos bandysime paskirstyti pagal pažįstamų grupes.</span>
+      <span data-lang-inline="nl">🛏️ <strong>Bruiloftsnacht (za 22 aug):</strong> overnachten op Giletos Sodyba is gratis voor onze gasten. Kamers zijn voor 5–7 personen, en we proberen ze in te delen op basis van wie elkaar kent.</span>
+      <span data-lang-inline="en">🛏️ <strong>Wedding night (Sat 22 Aug):</strong> staying at Giletos Sodyba is free for our guests. Rooms sleep 5–7, and we'll try to assign them based on who knows each other.</span>
+      <span data-lang-inline="lt">🛏️ <strong>Vestuvių naktis (šešt. 22 rugpj.):</strong> nakvynė Giletos Sodyboje mūsų svečiams nemokama. Kambariai skirti 5–7 žmonėms; juos bandysime paskirstyti pagal pažįstamų grupes.</span>
     </p>
   </div>
 
@@ -1965,7 +1968,7 @@
       </div>
     </div>
 
-    <div class="card">
+    <div class="card hide-lt">
       <span class="card-icon">👗</span>
       <div class="card-title">
         <span data-lang-inline="nl">Kledingvoorschrift</span>
@@ -1979,7 +1982,7 @@
       </div>
     </div>
 
-    <div class="card">
+    <div class="card hide-lt">
       <span class="card-icon">🎁</span>
       <div class="card-title">
         <span data-lang-inline="nl">Cadeau</span>
@@ -2108,14 +2111,31 @@
         <div class="timeline-dot"></div>
         <div class="timeline-content">
           <div class="timeline-title">
+            <span data-lang-inline="nl">Gasten arriveren bij Giletos Sodyba</span>
+            <span data-lang-inline="en">Guests arrive at Giletos Sodyba</span>
+            <span data-lang-inline="lt">Svečiai atvyksta į Giletos Sodybą</span>
+          </div>
+          <div class="timeline-body">
+            <span data-lang-inline="nl">Welkom, wat te drinken en even tijd om iedereen te begroeten.</span>
+            <span data-lang-inline="en">Welcome drinks and time to greet everyone.</span>
+            <span data-lang-inline="lt">Sutikimo gėrimai ir laikas pasisveikinti.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-time">16:45</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-title">
             <span data-lang-inline="nl">Bruidspaar arriveert</span>
-            <span data-lang-inline="en">Bride & groom arrive</span>
+            <span data-lang-inline="en">Newlyweds arrive</span>
             <span data-lang-inline="lt">Atvyksta jaunieji</span>
           </div>
           <div class="timeline-body">
-            <span data-lang-inline="nl">Dylan & Milana komen aan op de locatie.</span>
-            <span data-lang-inline="en">Dylan & Milana arrive at the venue.</span>
-            <span data-lang-inline="lt">Dylan ir Milana atvyksta į vietą.</span>
+            <span data-lang-inline="nl">Dylan & Milana komen terug van de fotoshoot.</span>
+            <span data-lang-inline="en">Dylan & Milana return from the photo session.</span>
+            <span data-lang-inline="lt">Dylan ir Milana grįžta iš fotosesijos.</span>
           </div>
         </div>
       </div>
@@ -2138,7 +2158,7 @@
       </div>
 
       <div class="timeline-item">
-        <div class="timeline-time">17:30</div>
+        <div class="timeline-time">18:00</div>
         <div class="timeline-dot"></div>
         <div class="timeline-content">
           <div class="timeline-title">
@@ -2147,26 +2167,60 @@
             <span data-lang-inline="lt">Sveikinimai</span>
           </div>
           <div class="timeline-body">
-            <span data-lang-inline="nl">Gasten feliciteren het bruidspaar — een korte ronde langs alle gasten.</span>
-            <span data-lang-inline="en">Guests congratulate the couple — a short receiving line.</span>
-            <span data-lang-inline="lt">Svečiai sveikina jaunuosius — trumpa svečių rotacija.</span>
+            <span data-lang-inline="nl">Gasten komen één voor één naar voren om het bruidspaar te feliciteren.</span>
+            <span data-lang-inline="en">Guests come forward one by one to congratulate the newlyweds.</span>
+            <span data-lang-inline="lt">Svečiai vienas po kito sveikina jaunuosius.</span>
           </div>
         </div>
       </div>
 
       <div class="timeline-item">
-        <div class="timeline-time">…</div>
+        <div class="timeline-time">19:00</div>
         <div class="timeline-dot"></div>
         <div class="timeline-content">
           <div class="timeline-title">
-            <span data-lang-inline="nl">Het verdere programma volgt</span>
-            <span data-lang-inline="en">The rest of the programme follows</span>
-            <span data-lang-inline="lt">Tada šventė prasideda</span>
+            <span data-lang-inline="nl">Diner</span>
+            <span data-lang-inline="en">Dinner</span>
+            <span data-lang-inline="lt">Vakarienė</span>
           </div>
           <div class="timeline-body">
-            <span data-lang-inline="nl">Diner, eerste dans, taart en feest tot diep in de nacht — het volledige programma delen we later.</span>
-            <span data-lang-inline="en">Dinner, first dance, cake and dancing well into the night — we'll share the full programme later.</span>
-            <span data-lang-inline="lt">Vakarienė, šokiai ir šventė iki ryto.</span>
+            <span data-lang-inline="nl">Aan tafel — een uitgebreid diner met Litouwse en internationale gerechten.</span>
+            <span data-lang-inline="en">To the tables — a full dinner with Lithuanian and international dishes.</span>
+            <span data-lang-inline="lt">Prie stalų — vakarienė su lietuviškais ir tarptautiniais patiekalais.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-time">21:30</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-title">
+            <span data-lang-inline="nl">Taart snijden</span>
+            <span data-lang-inline="en">Cake cutting</span>
+            <span data-lang-inline="lt">Torto pjovimas</span>
+          </div>
+          <div class="timeline-body">
+            <span data-lang-inline="nl">Het bruidspaar snijdt de taart aan.</span>
+            <span data-lang-inline="en">The newlyweds cut the wedding cake.</span>
+            <span data-lang-inline="lt">Jaunieji pjauna vestuvinį tortą.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item highlight">
+        <div class="timeline-time">22:00</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-title">
+            <span data-lang-inline="nl">Eerste dans van het bruidspaar</span>
+            <span data-lang-inline="en">Newlyweds' first dance</span>
+            <span data-lang-inline="lt">Pirmasis jaunųjų šokis</span>
+          </div>
+          <div class="timeline-body">
+            <span data-lang-inline="nl">De opening van de dansvloer — daarna dansen tot diep in de nacht.</span>
+            <span data-lang-inline="en">The dance floor opens — then dancing well into the night.</span>
+            <span data-lang-inline="lt">Šokių aikštelės atidarymas — o po to šokiai iki ryto.</span>
           </div>
         </div>
       </div>
@@ -2322,6 +2376,15 @@
         <span data-lang-inline="lt">Išbandykite <em>Cepelinai</em> (bulviniai virtiniai su mėsa) ir <em>Šaltibarščiai</em> (rožinė burokėlių sriuba) — nuostabiai skanu!</span>
       </p>
     </div>
+  </div>
+
+  <!-- Public transport tip: Žiogas app -->
+  <div class="highlight-box" style="margin-top:2rem;">
+    <p>
+      <span data-lang-inline="nl">🚌 <strong>Rondreizen in Kaunas — Žiogas-app:</strong> download <em>Žiogas</em> (gratis, iOS & Android) om bussen en trolleybussen in Kaunas te betalen zonder cash. Registreer met je e-mail, voeg je bankkaart toe, en tik in de app op <strong>"Buy ticket"</strong> zodra je instapt. Het ticket geldt 60 minuten (incl. overstappen). Bushaltes tonen live wanneer de volgende bus komt.</span>
+      <span data-lang-inline="en">🚌 <strong>Getting around Kaunas — Žiogas app:</strong> grab <em>Žiogas</em> (free, iOS & Android) to pay for buses and trolleybuses without cash. Sign up with your email, add your card, and hit <strong>"Buy ticket"</strong> in the app as soon as you board. One ticket is valid for 60 minutes (transfers included). Stops show live arrivals for the next bus.</span>
+      <span data-lang-inline="lt">🚌 <strong>Judėjimas Kaune — Žiogas programėlė:</strong> parsisiųskite <em>Žiogą</em> (nemokama, iOS ir „Android") ir mokėkite už autobusus bei troleibusus be grynųjų. Užsiregistruokite el. paštu, pridėkite kortelę ir įlipę spauskite <strong>„Pirkti bilietą"</strong>. Bilietas galioja 60 min. (įskaitant persėdimus). Stotelėse rodomas artimiausio transporto laikas.</span>
+    </p>
   </div>
 
   <!-- Lithuanian food gallery — only shown to travellers (parent section is .traveler-only) -->
@@ -2499,62 +2562,6 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════
-     RSVP — visible to all guests
-     ═══════════════════════════════════════════════════════════ -->
-<section id="rsvp">
-
-  <div data-lang="nl">
-    <p class="section-label">Aanmelden</p>
-    <h2 class="section-title">RSVP</h2>
-    <p class="section-intro">Dit formulier is voor gasten die <strong>nog niet hebben gereageerd</strong>. Laat ons vóór <strong>1 juni 2026</strong> weten of je erbij bent. Geef ook door of je wilt overnachten op Giletos Sodyba.</p>
-  </div>
-
-  <div data-lang="en">
-    <p class="section-label">Confirm attendance</p>
-    <h2 class="section-title">RSVP</h2>
-    <p class="section-intro">This form is for guests who <strong>haven't responded yet</strong>. Please let us know before <strong>1 June 2026</strong> whether you'll be joining us. Include whether you'd like to stay over at Giletos Sodyba.</p>
-  </div>
-
-  <div data-lang="lt">
-    <p class="section-label">Patvirtinimas</p>
-    <h2 class="section-title">RSVP</h2>
-    <p class="section-intro">Ši forma skirta svečiams, kurie <strong>dar nepatvirtino dalyvavimo</strong>. Praneškite mums iki <strong>2026 m. birželio 1 d.</strong>, ar dalyvausite. Pažymėkite ir nakvynės pageidavimus Giletos Sodyboje.</p>
-  </div>
-
-  <div class="rsvp-cta">
-    <span class="rsvp-cta-icon">📝</span>
-    <h3 class="rsvp-cta-title">
-      <span data-lang-inline="nl">Vul het RSVP-formulier in</span>
-      <span data-lang-inline="en">Fill in the RSVP form</span>
-      <span data-lang-inline="lt">Užpildykite RSVP formą</span>
-    </h3>
-    <p class="rsvp-cta-text">
-      <span data-lang-inline="nl">Het kost je nog geen 2 minuten. Eén formulier voor aanwezigheid, +1 en overnachting in één keer.</span>
-      <span data-lang-inline="en">Takes less than 2 minutes. One form covers attendance, plus-one and accommodation.</span>
-      <span data-lang-inline="lt">Užtruks mažiau nei 2 minutes. Viena forma apima dalyvavimą, palydovą ir nakvynę.</span>
-    </p>
-    <a href="https://forms.gle/endZnLb8nd6BLEMCA" target="_blank" rel="noopener" class="btn btn-gold rsvp-cta-btn">
-      <span data-lang-inline="nl">Open formulier →</span>
-      <span data-lang-inline="en">Open form →</span>
-      <span data-lang-inline="lt">Atidaryti formą →</span>
-    </a>
-    <p class="rsvp-cta-fallback">
-      <span data-lang-inline="nl">Lukt het niet? Stuur dan een <a href="mailto:dgrefte@gmail.com?subject=RSVP%20Dylan%20%26%20Milana%2022.08.2026">mailtje</a> aan Dylan of Milana.</span>
-      <span data-lang-inline="en">Trouble with the form? <a href="mailto:dgrefte@gmail.com?subject=RSVP%20Dylan%20%26%20Milana%2022.08.2026">Email</a> Dylan or Milana instead.</span>
-      <span data-lang-inline="lt">Nepavyksta? Parašykite <a href="mailto:dgrefte@gmail.com?subject=RSVP%20Dylan%20%26%20Milana%2022.08.2026">laišką</a> Dylanui arba Milanai.</span>
-    </p>
-  </div>
-
-  <div class="rsvp-warning">
-    <p>
-      <span data-lang-inline="nl">⚠️ <strong>Belangrijk:</strong> zonder reactie kunnen we helaas geen rekening met je houden — geen plek aan tafel, geen vervoer, geen overnachting. Vul het formulier dus alsjeblieft in, ook als je niet kunt komen!</span>
-      <span data-lang-inline="en">⚠️ <strong>Important:</strong> without a response we unfortunately can't reserve a place for you — no seat, no transport, no room. Please fill in the form, even if you can't make it!</span>
-      <span data-lang-inline="lt">⚠️ <strong>Svarbu:</strong> be jūsų atsakymo, deja, negalėsime į jus atsižvelgti — nei vietos prie stalo, nei transporto, nei nakvynės. Užpildykite formą net jei negalite atvykti!</span>
-    </p>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════
      FAQ — items split by audience
      ═══════════════════════════════════════════════════════════ -->
 <section id="faq">
@@ -2631,9 +2638,9 @@
       <span data-lang-inline="lt">Ar yra nakvynės galimybė prie vietos?</span>
     </div>
     <div class="faq-a">
-      <span data-lang-inline="nl">Ja — overnachten op Giletos Sodyba is <strong>gratis</strong> voor onze gasten. De kamers zijn ingericht voor <strong>5 tot 7 personen</strong>, en we proberen de kamers in te delen op basis van wie elkaar kent. Laat het ons bij je RSVP weten als je wilt blijven slapen.</span>
-      <span data-lang-inline="en">Yes — staying overnight at Giletos Sodyba is <strong>free</strong> for our guests. Each room sleeps <strong>5 to 7 people</strong>, and we'll try to group rooms based on who knows each other. Please let us know in your RSVP if you'd like to stay overnight.</span>
-      <span data-lang-inline="lt">Taip — nakvynė Giletos Sodyboje mūsų svečiams yra <strong>nemokama</strong>. Kambariai skirti <strong>5–7 žmonėms</strong>; juos bandysime paskirstyti pagal pažįstamų grupes. Patvirtinkite norimą nakvynę kartu su dalyvavimu.</span>
+      <span data-lang-inline="nl">Ja — overnachten op Giletos Sodyba is <strong>gratis</strong> voor onze gasten. De kamers zijn ingericht voor <strong>5 tot 7 personen</strong>, en we proberen de kamers in te delen op basis van wie elkaar kent.</span>
+      <span data-lang-inline="en">Yes — staying overnight at Giletos Sodyba is <strong>free</strong> for our guests. Each room sleeps <strong>5 to 7 people</strong>, and we'll try to group rooms based on who knows each other.</span>
+      <span data-lang-inline="lt">Taip — nakvynė Giletos Sodyboje mūsų svečiams yra <strong>nemokama</strong>. Kambariai skirti <strong>5–7 žmonėms</strong>; juos bandysime paskirstyti pagal pažįstamų grupes.</span>
     </div>
   </div>
 
@@ -2647,19 +2654,6 @@
       <span data-lang-inline="nl">Voor gasten die op Giletos Sodyba blijven slapen, regelen we zondagochtend een <strong>brunch</strong> — een ontspannen manier om samen na te genieten van de avond ervoor.</span>
       <span data-lang-inline="en">For guests staying overnight at Giletos Sodyba, we'll arrange a <strong>brunch</strong> on Sunday morning — a relaxed way to wind down together after the night before.</span>
       <span data-lang-inline="lt">Svečiams, likusiems nakvoti Giletos Sodyboje, sekmadienio rytą surengsime <strong>pusryčius</strong> — ramus būdas kartu užbaigti šventę.</span>
-    </div>
-  </div>
-
-  <div class="faq-item">
-    <div class="faq-q">
-      <span data-lang-inline="nl">Moet ik me aanmelden / RSVP'en?</span>
-      <span data-lang-inline="en">Do I need to RSVP?</span>
-      <span data-lang-inline="lt">Ar turiu patvirtinti dalyvavimą?</span>
-    </div>
-    <div class="faq-a">
-      <span data-lang-inline="nl">Ja — alleen als je nog niet hebt gereageerd. Doe het vóór <strong>1 juni 2026</strong> via het <a href="#rsvp">RSVP-formulier</a>. Zonder reactie kunnen we helaas geen rekening met je houden, dus vul het zeker in!</span>
-      <span data-lang-inline="en">Yes — only if you haven't responded yet. Please do so before <strong>1 June 2026</strong> via the <a href="#rsvp">RSVP form</a>. Without a response we unfortunately can't reserve a place for you, so please fill it in!</span>
-      <span data-lang-inline="lt">Taip — tik jei dar nepatvirtinote. Užpildykite iki <strong>2026 m. birželio 1 d.</strong> per <a href="#rsvp">RSVP formą</a>. Be jūsų atsakymo, deja, negalėsime į jus atsižvelgti, todėl būtinai užpildykite!</span>
     </div>
   </div>
 
