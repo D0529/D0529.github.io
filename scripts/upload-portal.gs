@@ -2,7 +2,7 @@
  * Wedding Photo Upload Portal — Google Apps Script backend
  * Receives file uploads from upload.html on d0529.github.io and saves
  * each file to Google Drive, organised as:
- *   {ROOT_FOLDER_NAME}/{Guest name}/{Device}/{timestamp}_{original filename}
+ *   {ROOT_FOLDER_NAME}/{Guest name}/{timestamp}_{original filename}
  *
  * ── SETUP ────────────────────────────────────────────────────────────
  * 1. Go to https://script.google.com and click "New project"
@@ -50,7 +50,6 @@ function doPost(e) {
     }
 
     const guestName = sanitize(p.guestName, 50);
-    const device = sanitize(p.device || 'Unknown', 30);
     const originalName = sanitize(p.fileName, 100);
     const mimeType = String(p.mimeType || 'application/octet-stream');
 
@@ -63,15 +62,14 @@ function doPost(e) {
 
     const root = getOrCreateFolder(DriveApp.getRootFolder(), ROOT_FOLDER_NAME);
     const guestFolder = getOrCreateFolder(root, guestName);
-    const deviceFolder = getOrCreateFolder(guestFolder, device);
 
-    const file = deviceFolder.createFile(blob);
+    const file = guestFolder.createFile(blob);
 
     return jsonResponse({
       ok: true,
       id: file.getId(),
       name: file.getName(),
-      folder: guestName + '/' + device,
+      folder: guestName,
     });
   } catch (err) {
     return jsonResponse({ ok: false, error: String(err && err.message || err) });
